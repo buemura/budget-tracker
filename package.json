@@ -4,7 +4,9 @@
   "description": "budget-tracker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo run build",
+    "start:dev": "turbo run start:dev",
+    "start": "node apps/api/dist/main"
   },
   "keywords": [],
   "author": "",

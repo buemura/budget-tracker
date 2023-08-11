@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
+import { useState } from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
 
-import { Collapsable } from "@components/common/Collapsable";
-import { IExpense } from "@interfaces/expense";
-import { PaginationMetadata } from "@interfaces/pagination";
-import ExpensesData from "./components/ExpensesData";
-import ModalNewExpense from "./components/ModalNewExpense";
+import { IExpense } from '../../../interfaces/expense';
+import { PaginationMetadata } from '../../../interfaces/pagination';
+import { Collapsable } from '../../common/Collapsable';
+import ExpensesData from './components/ExpensesData';
+import ModalNewExpense from './components/ModalNewExpense';
 
 interface ExpensesProps {
   expenses: IExpense[] | null;
@@ -14,12 +14,7 @@ interface ExpensesProps {
   setPagination: (data: PaginationMetadata) => void;
 }
 
-export function Expenses({
-  expenses,
-  isLoading,
-  pagination,
-  setPagination,
-}: ExpensesProps) {
+export function Expenses({ expenses, isLoading }: ExpensesProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (

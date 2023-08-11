@@ -1,7 +1,7 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { FormattedNumber } from "react-intl";
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { FormattedNumber } from 'react-intl';
 
-import { usePreferenceStore } from "@stores/preferences";
+import { usePreferenceStore } from '../../../../stores/preferences';
 
 interface TotalBalanceProps {
   totalBalance: number;

@@ -16,7 +16,7 @@ async function bootstrap() {
   setupApm();
 
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  // app.enableCors();
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(

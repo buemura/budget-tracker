@@ -1,5 +1,5 @@
-import { User } from "@interfaces/user";
-import { api } from "./api";
+import { User } from '../../interfaces/user';
+import { api } from './api';
 
 type GetUserDataRequestProps = {
   userId: string;
@@ -12,15 +12,15 @@ type GetUserDataResponseProps = {
 
 async function getUserData({
   userId,
-  accessToken,
+  accessToken
 }: GetUserDataRequestProps): Promise<GetUserDataResponseProps | null> {
   const url = `/users/${userId}`;
   const { data: response } = await api.get(url, {
-    headers: { Authorization: `Bearer ${accessToken}` },
+    headers: { Authorization: `Bearer ${accessToken}` }
   });
   return response?.data;
 }
 
 export const userService = {
-  getUserData,
+  getUserData
 };

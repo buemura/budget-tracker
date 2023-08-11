@@ -11,9 +11,9 @@ export function ModalInput({
   inputId,
   inputType,
   value,
-  onChangeValue,
+  onChangeValue
 }: InputProps) {
-  if (inputType === "checkbox") {
+  if (inputType === 'checkbox') {
     return (
       <>
         <label htmlFor={inputId}>{labelText}</label>

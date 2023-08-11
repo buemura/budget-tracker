@@ -1,4 +1,4 @@
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut } from 'react-icons/fi';
 
 interface SignOutButtonProps {
   onClick: () => void;

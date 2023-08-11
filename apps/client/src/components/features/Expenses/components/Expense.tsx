@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { formatDate } from "@helpers/date";
-import { IExpense } from "@interfaces/expense";
-import ExpensePaymentStatus from "./ExpensePaymentStatus";
-import ModalUpdateExpense from "./ModalUpdateExpense";
+import { formatDate } from '../../../../helpers/date';
+import { IExpense } from '../../../../interfaces/expense';
+import ExpensePaymentStatus from './ExpensePaymentStatus';
+import ModalUpdateExpense from './ModalUpdateExpense';
 
 interface ExpenseProps {
   expense: IExpense;
@@ -27,7 +27,7 @@ export function Expense({ expense }: ExpenseProps) {
             className="rounded-full border-2 border-gray-300 w-9 h-9"
             src={
               expense.imageUrl ||
-              "https://www.caltrain.com/files/images/2021-09/default.jpg"
+              'https://www.caltrain.com/files/images/2021-09/default.jpg'
             }
             alt="expense"
             referrerPolicy="no-referrer"

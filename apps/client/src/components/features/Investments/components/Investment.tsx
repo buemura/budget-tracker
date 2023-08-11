@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { FormattedNumber } from 'react-intl';
 
-import { formatDate } from "@helpers/date";
-import { IInvestment } from "@interfaces/investment";
-import { FormattedNumber } from "react-intl";
-import { ModalUpdateInvestment } from "./ModalUpdateInvestment";
+import { formatDate } from '../../../../helpers/date';
+import { IInvestment } from '../../../../interfaces/investment';
+import { ModalUpdateInvestment } from './ModalUpdateInvestment';
 
 interface InvestmentProps {
   investment: IInvestment;
@@ -21,7 +21,7 @@ export function Investment({ investment }: InvestmentProps) {
         <div className="flex items-center gap-2">
           <img
             className="rounded-full border-2 border-gray-300 w-9 h-9"
-            src={"https://www.caltrain.com/files/images/2021-09/default.jpg"}
+            src={'https://www.caltrain.com/files/images/2021-09/default.jpg'}
             alt="investment"
             referrerPolicy="no-referrer"
           />
@@ -37,7 +37,7 @@ export function Investment({ investment }: InvestmentProps) {
         <div className="flex flex-col">
           <div className="text-base">
             <span className="text-neutral-600 text-sm">Price: </span>
-            {investment.ticker.includes("SA") ? (
+            {investment.ticker.includes('SA') ? (
               <FormattedNumber
                 value={investment.pricePerQuantity}
                 style="currency"

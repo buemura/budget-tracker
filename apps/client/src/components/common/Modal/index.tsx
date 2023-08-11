@@ -1,4 +1,4 @@
-import { LoaderSpinner } from "../Loader";
+import { LoaderSpinner } from '../Loader';
 
 interface InputProps {
   input: React.ReactNode;
@@ -17,7 +17,7 @@ export function Modal({
   inputs,
   onCancel,
   onSave,
-  isLoading = false,
+  isLoading = false
 }: ModalProps) {
   return (
     <>
@@ -53,8 +53,8 @@ export function Modal({
                     height={20}
                     strokeWidth={8}
                     strokeWidthSecondary={8}
-                    primaryColor={"#ffffff"}
-                    secondaryColor={"#bcbcbc"}
+                    primaryColor={'#ffffff'}
+                    secondaryColor={'#bcbcbc'}
                   />
                 </button>
               ) : (

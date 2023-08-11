@@ -1,4 +1,4 @@
-import { FiSun } from "react-icons/fi";
+import { FiSun } from 'react-icons/fi';
 
 export default function ThemeToggle() {
   return (

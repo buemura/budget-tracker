@@ -1,19 +1,19 @@
-import { FormEvent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { FormEvent, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { Button } from "@components/features/AuthForm/Button";
-import { Input } from "@components/features/AuthForm/Input";
-import { useRouterNavigate } from "@hooks/useRouterNavigate";
-import { authService } from "@services/http/auth-service";
-import { useUserStore } from "@stores/user";
+import { Button } from '../../../components/features/AuthForm/Button';
+import { Input } from '../../../components/features/AuthForm/Input';
+import { useRouterNavigate } from '../../../hooks/useRouterNavigate';
+import { authService } from '../../../services/http/auth-service';
+import { useUserStore } from '../../../stores/user';
 
 export default function Login() {
   const { user, setUser } = useUserStore();
   const { routerNavigate } = useRouterNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -22,23 +22,23 @@ export default function Login() {
     try {
       const data = await authService.login({ email, password });
       setUser({
-        id: data?.user.id || "",
-        name: data?.user.name || "",
-        email: data?.user.email || "",
-        imageUrl: data?.user.imageUrl || "",
-        accessToken: data?.accessToken || "",
+        id: data?.user.id || '',
+        name: data?.user.name || '',
+        email: data?.user.email || '',
+        imageUrl: data?.user.imageUrl || '',
+        accessToken: data?.accessToken || ''
       });
       setIsLoading(false);
-      return routerNavigate("/");
+      return routerNavigate('/');
     } catch (error: any) {
-      alert("Authentication failed");
+      alert('Authentication failed');
       location.reload();
     }
   };
 
   useEffect(() => {
     if (user) {
-      return routerNavigate("/");
+      return routerNavigate('/');
     }
   }, [user]);
 
@@ -60,7 +60,7 @@ export default function Login() {
           <p className=" text-neutral-400">Not registered yet?&nbsp;</p>
           <Link
             className="text-neutral-500 hover:underline"
-            to={"/auth/register"}
+            to={'/auth/register'}
           >
             Click hete to sign up
           </Link>

@@ -1,26 +1,23 @@
-import { useState } from "react";
-import { AiFillPlusCircle } from "react-icons/ai";
-import { FcBarChart } from "react-icons/fc";
+import { useState } from 'react';
+import { AiFillPlusCircle } from 'react-icons/ai';
+import { FcBarChart } from 'react-icons/fc';
 
-import { Modal } from "@components/common/Modal";
-import { ModalInput } from "@components/common/Modal/Input";
-import { useUserStore } from "@stores/user";
+import { Modal } from '../../common/Modal';
+import { ModalInput } from '../../common/Modal/Input';
 
 export function Transactions() {
-  const { user } = useUserStore();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSaveLoading, setIsSaveLoading] = useState(false);
-  const [title, setTitle] = useState("");
+  const [isSaveLoading] = useState(false);
+  const [title, setTitle] = useState('');
 
   const handleSaveNew = () => {
     setIsModalOpen(false);
-    console.log("save new transaction");
+    console.log('save new transaction');
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
-    console.log("cancel new transaction");
+    console.log('cancel new transaction');
   };
 
   return (
@@ -71,8 +68,8 @@ export function Transactions() {
                   value={title}
                   onChangeValue={setTitle}
                 />
-              ),
-            },
+              )
+            }
           ]}
           onCancel={handleCancel}
           onSave={handleSaveNew}

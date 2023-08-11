@@ -10,8 +10,7 @@ import { UserModule } from './user/user.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../..', 'client/dist'),
-      renderPath: '/',
+      rootPath: join(__dirname, '../../../', 'client/dist'),
     }),
     ConfigModule.forRoot({
       isGlobal: true,

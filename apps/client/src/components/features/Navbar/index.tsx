@@ -1,7 +1,7 @@
-import { User } from "@interfaces/user";
-import { useUserStore } from "@stores/user";
-import ProfileImage from "./components/ProfileImage";
-import SignOutButton from "./components/SignoutButton";
+import { User } from '../../../interfaces/user';
+import { useUserStore } from '../../../stores/user';
+import ProfileImage from './components/ProfileImage';
+import SignOutButton from './components/SignoutButton';
 
 interface NavbarProps {
   user: User | null;

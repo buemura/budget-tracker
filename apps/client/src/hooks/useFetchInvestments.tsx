@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { EXPENSES_DEFAULT_PAGINATION } from "@helpers/constants";
-import { IInvestment } from "@interfaces/investment";
-import { investmentService } from "@services/http/investment-service";
-import { IUseFetchProps } from "./types";
+import { EXPENSES_DEFAULT_PAGINATION } from '../helpers/constants';
+import { IInvestment } from '../interfaces/investment';
+import { investmentService } from '../services/http/investment-service';
+import { IUseFetchProps } from './types';
 
 export const useFetchInvestments = ({ user, page, items }: IUseFetchProps) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,15 +13,15 @@ export const useFetchInvestments = ({ user, page, items }: IUseFetchProps) => {
   const fetchExpenses = async () => {
     const pagination = {
       page: page || EXPENSES_DEFAULT_PAGINATION.PAGE,
-      items: items || EXPENSES_DEFAULT_PAGINATION.ITEMS,
+      items: items || EXPENSES_DEFAULT_PAGINATION.ITEMS
     };
 
     try {
       setIsLoading(true);
       const result = await investmentService.fetchAll({
-        userId: user?.id || "",
-        accessToken: user?.accessToken || "",
-        pagination,
+        userId: user?.id || '',
+        accessToken: user?.accessToken || '',
+        pagination
       });
       setIsLoading(false);
       setInvestments(result);

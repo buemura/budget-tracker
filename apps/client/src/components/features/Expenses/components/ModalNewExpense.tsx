@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Modal } from "@components/common/Modal";
-import { ModalInput } from "@components/common/Modal/Input";
-import { expenseService } from "@services/http/expense-service";
-import { useUserStore } from "@stores/user";
+import { expenseService } from '../../../../services/http/expense-service';
+import { useUserStore } from '../../../../stores/user';
+import { Modal } from '../../../common/Modal';
+import { ModalInput } from '../../../common/Modal/Input';
 
 interface ModalNewExpenseProps {
   isModalOpen: boolean;
@@ -12,13 +12,13 @@ interface ModalNewExpenseProps {
 
 export default function ModalNewExpense({
   isModalOpen,
-  setIsModalOpen,
+  setIsModalOpen
 }: ModalNewExpenseProps) {
   const { user } = useUserStore();
 
   const [isSaveLoading, setIsSaveLoading] = useState(false);
-  const [title, setTitle] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [title, setTitle] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -29,9 +29,9 @@ export default function ModalNewExpense({
 
     await expenseService.create({
       title,
-      userId: user?.id || "",
+      userId: user?.id || '',
       imageUrl,
-      accessToken: user?.accessToken || "",
+      accessToken: user?.accessToken || ''
     });
 
     setIsModalOpen(false);
@@ -56,7 +56,7 @@ export default function ModalNewExpense({
               value={title}
               onChangeValue={setTitle}
             />
-          ),
+          )
         },
         {
           input: (
@@ -67,8 +67,8 @@ export default function ModalNewExpense({
               value={imageUrl}
               onChangeValue={setImageUrl}
             />
-          ),
-        },
+          )
+        }
       ]}
       onCancel={handleCancel}
       onSave={handleSaveNew}

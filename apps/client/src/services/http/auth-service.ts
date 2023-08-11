@@ -1,4 +1,4 @@
-import { api } from "./api";
+import { api } from './api';
 
 type LoginRequestProps = {
   email: string;
@@ -22,7 +22,7 @@ type RegisterResponseProps = {
 
 async function login({
   email,
-  password,
+  password
 }: LoginRequestProps): Promise<LoginResponseProps | null> {
   try {
     const url = `/auth/login`;
@@ -37,7 +37,7 @@ async function login({
 async function register({
   name,
   email,
-  password,
+  password
 }: RegisterRequestProps): Promise<RegisterResponseProps | null> {
   try {
     const url = `/auth/register`;
@@ -51,5 +51,5 @@ async function register({
 
 export const authService = {
   login,
-  register,
+  register
 };

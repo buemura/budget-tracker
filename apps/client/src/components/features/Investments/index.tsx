@@ -1,16 +1,16 @@
-import { investmentService } from "@services/http/investment-service";
-import { useUserStore } from "@stores/user";
-import { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
-import { FiRefreshCw } from "react-icons/fi";
+import { useState } from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
+import { FiRefreshCw } from 'react-icons/fi';
 
-import { IInvestment } from "../../../interfaces/investment";
-import { PaginationMetadata } from "../../../interfaces/pagination";
-import { Collapsable } from "../../common/Collapsable";
-import { LoaderSpinner } from "../../common/Loader";
-import InvestmentsData from "./components/InvestmentsData";
-import { ModalNewInvestment } from "./components/ModalNewInvestment";
-import { MESSAGES } from "./helpers/messages";
+import { IInvestment } from '../../../interfaces/investment';
+import { PaginationMetadata } from '../../../interfaces/pagination';
+import { investmentService } from '../../../services/http/investment-service';
+import { useUserStore } from '../../../stores/user';
+import { Collapsable } from '../../common/Collapsable';
+import { LoaderSpinner } from '../../common/Loader';
+import InvestmentsData from './components/InvestmentsData';
+import { ModalNewInvestment } from './components/ModalNewInvestment';
+import { MESSAGES } from './helpers/messages';
 
 interface InvestmentsProps {
   investments: IInvestment[] | null;
@@ -19,12 +19,7 @@ interface InvestmentsProps {
   setPagination: (data: PaginationMetadata) => void;
 }
 
-export function Investments({
-  investments,
-  isLoading,
-  pagination,
-  setPagination,
-}: InvestmentsProps) {
+export function Investments({ investments, isLoading }: InvestmentsProps) {
   const { user } = useUserStore();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,8 +29,8 @@ export function Investments({
     setIsPriceUpdateLoading(true);
 
     await investmentService.updatePrices({
-      userId: user?.id ?? "",
-      accessToken: user?.accessToken ?? "",
+      userId: user?.id ?? '',
+      accessToken: user?.accessToken ?? ''
     });
 
     setIsPriceUpdateLoading(false);

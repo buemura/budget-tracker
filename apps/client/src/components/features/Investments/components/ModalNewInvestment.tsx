@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { investmentService } from "../../../../services/http/investment-service";
-import { useUserStore } from "../../../../stores/user";
-import { Modal } from "../../../common/Modal";
-import { ModalInput } from "../../../common/Modal/Input";
-import { MESSAGES } from "../helpers/messages";
+import { investmentService } from '../../../../services/http/investment-service';
+import { useUserStore } from '../../../../stores/user';
+import { Modal } from '../../../common/Modal';
+import { ModalInput } from '../../../common/Modal/Input';
+import { MESSAGES } from '../helpers/messages';
 
 interface ModalNewInvestmentProps {
   isModalOpen: boolean;
@@ -13,14 +13,14 @@ interface ModalNewInvestmentProps {
 
 export function ModalNewInvestment({
   isModalOpen,
-  setIsModalOpen,
+  setIsModalOpen
 }: ModalNewInvestmentProps) {
   const { user } = useUserStore();
 
   const [isSaveLoading, setIsSaveLoading] = useState(false);
-  const [category, setCategory] = useState("");
-  const [ticker, setTicker] = useState("");
-  const [type, setType] = useState("");
+  const [category, setCategory] = useState('');
+  const [ticker, setTicker] = useState('');
+  const [type, setType] = useState('');
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -30,12 +30,12 @@ export function ModalNewInvestment({
     setIsSaveLoading(true);
 
     await investmentService.create({
-      userId: user?.id || "",
-      accountId: "",
+      userId: user?.id || '',
+      accountId: '',
       category,
       ticker,
       type,
-      accessToken: user?.accessToken || "",
+      accessToken: user?.accessToken || ''
     });
 
     setIsModalOpen(false);
@@ -60,7 +60,7 @@ export function ModalNewInvestment({
               value={category}
               onChangeValue={setCategory}
             />
-          ),
+          )
         },
         {
           input: (
@@ -71,7 +71,7 @@ export function ModalNewInvestment({
               value={ticker}
               onChangeValue={setTicker}
             />
-          ),
+          )
         },
         {
           input: (
@@ -82,8 +82,8 @@ export function ModalNewInvestment({
               value={type}
               onChangeValue={setType}
             />
-          ),
-        },
+          )
+        }
       ]}
       onCancel={handleCancel}
       onSave={handleSaveNew}

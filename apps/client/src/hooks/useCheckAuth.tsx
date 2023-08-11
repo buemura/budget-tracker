@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { User } from "@interfaces/user";
-import { userService } from "@services/http/user-service";
-import { useRouterNavigate } from "./useRouterNavigate";
+import { User } from '../interfaces/user';
+import { userService } from '../services/http/user-service';
+import { useRouterNavigate } from './useRouterNavigate';
 
 export const useCheckAuth = (user: User | null) => {
   const { routerNavigate } = useRouterNavigate();
@@ -11,8 +11,8 @@ export const useCheckAuth = (user: User | null) => {
   const fetchUserData = async () => {
     try {
       await userService.getUserData({
-        userId: user?.id || "",
-        accessToken: user?.accessToken || "",
+        userId: user?.id || '',
+        accessToken: user?.accessToken || ''
       });
     } catch (error) {
       setHasError(true);
@@ -21,7 +21,7 @@ export const useCheckAuth = (user: User | null) => {
 
   useEffect(() => {
     if (!user) {
-      return routerNavigate("/auth/login");
+      return routerNavigate('/auth/login');
     }
 
     fetchUserData();

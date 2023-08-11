@@ -1,6 +1,6 @@
-import { IInvestment } from "@interfaces/investment";
-import { PaginationMetadata } from "@interfaces/pagination";
-import { api } from "./api";
+import { IInvestment } from '../../interfaces/investment';
+import { PaginationMetadata } from '../../interfaces/pagination';
+import { api } from './api';
 
 type FetchAllProps = {
   userId: string;
@@ -35,11 +35,11 @@ type UpdatePricesProps = {
 async function fetchAll({
   userId,
   accessToken,
-  pagination,
+  pagination
 }: FetchAllProps): Promise<IInvestment[]> {
   const url = `/users/${userId}/investments?page=${pagination?.page}&items=${pagination?.items}`;
   const { data: response } = await api.get(url, {
-    headers: { Authorization: `Bearer ${accessToken}` },
+    headers: { Authorization: `Bearer ${accessToken}` }
   });
   return response?.data;
 }
@@ -50,13 +50,13 @@ async function create({
   category,
   ticker,
   type,
-  accessToken,
+  accessToken
 }: CreateProps): Promise<any> {
   try {
     const url = `/users/${userId}/investments`;
     const body = { accountId, category, ticker, type };
     const { data: response } = await api.post(url, body, {
-      headers: { Authorization: `Bearer ${accessToken}` },
+      headers: { Authorization: `Bearer ${accessToken}` }
     });
     return response?.data;
   } catch (error) {
@@ -71,13 +71,13 @@ async function update({
   category,
   ticker,
   type,
-  accessToken,
+  accessToken
 }: UpdateProps): Promise<any> {
   try {
     const url = `/users/${userId}/investments/${investmentId}`;
     const body = { accountId, category, ticker, type };
     const { data: response } = await api.patch(url, body, {
-      headers: { Authorization: `Bearer ${accessToken}` },
+      headers: { Authorization: `Bearer ${accessToken}` }
     });
     return response?.data;
   } catch (error) {
@@ -87,12 +87,12 @@ async function update({
 
 async function updatePrices({
   userId,
-  accessToken,
+  accessToken
 }: UpdatePricesProps): Promise<any> {
   try {
     const url = `/users/${userId}/investments-update`;
     const { data: response } = await api.get(url, {
-      headers: { Authorization: `Bearer ${accessToken}` },
+      headers: { Authorization: `Bearer ${accessToken}` }
     });
     return response?.data;
   } catch (error) {
@@ -104,5 +104,5 @@ export const investmentService = {
   fetchAll,
   create,
   update,
-  updatePrices,
+  updatePrices
 };

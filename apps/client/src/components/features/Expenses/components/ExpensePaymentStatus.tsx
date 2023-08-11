@@ -3,7 +3,7 @@ interface ExpensePaymentStatusProps {
 }
 
 export default function ExpensePaymentStatus({
-  isPaid,
+  isPaid
 }: ExpensePaymentStatusProps) {
   if (isPaid) {
     return (

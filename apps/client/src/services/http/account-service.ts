@@ -1,6 +1,6 @@
-import { IAccount, IAccounts } from "@interfaces/account";
-import { PaginationMetadata } from "@interfaces/pagination";
-import { api } from "./api";
+import { IAccount, IAccounts } from '../../interfaces/account';
+import { PaginationMetadata } from '../../interfaces/pagination';
+import { api } from './api';
 
 type FetchAllProps = {
   userId: string;
@@ -34,11 +34,11 @@ type RemoveProps = {
 async function fetchAll({
   userId,
   accessToken,
-  pagination,
+  pagination
 }: FetchAllProps): Promise<IAccounts> {
   const url = `/users/${userId}/accounts?page=${pagination?.page}&items=${pagination?.items}`;
   const { data: response } = await api.get(url, {
-    headers: { Authorization: `Bearer ${accessToken}` },
+    headers: { Authorization: `Bearer ${accessToken}` }
   });
   return response?.data;
 }
@@ -48,13 +48,13 @@ async function create({
   name,
   balance,
   icon,
-  accessToken,
+  accessToken
 }: CreateProps): Promise<any> {
   try {
     const url = `/users/${userId}/accounts`;
     const body = { userId, name, balance, icon };
     const { data: response } = await api.post(url, body, {
-      headers: { Authorization: `Bearer ${accessToken}` },
+      headers: { Authorization: `Bearer ${accessToken}` }
     });
     return response?.data;
   } catch (error) {
@@ -68,13 +68,13 @@ async function update({
   name,
   balance,
   icon,
-  accessToken,
+  accessToken
 }: UpdateProps): Promise<any> {
   try {
     const url = `/users/${userId}/accounts/${accountId}`;
     const body = { name, balance, icon };
     const { data: response } = await api.patch(url, body, {
-      headers: { Authorization: `Bearer ${accessToken}` },
+      headers: { Authorization: `Bearer ${accessToken}` }
     });
     return response?.data;
   } catch (error) {
@@ -85,11 +85,11 @@ async function update({
 async function remove({
   userId,
   accountId,
-  accessToken,
+  accessToken
 }: RemoveProps): Promise<IAccount[]> {
   const url = `/users/${userId}/accounts/${accountId}`;
   const { data: response } = await api.delete(url, {
-    headers: { Authorization: `Bearer ${accessToken}` },
+    headers: { Authorization: `Bearer ${accessToken}` }
   });
   return response?.data;
 }
@@ -98,5 +98,5 @@ export const accountService = {
   fetchAll,
   create,
   update,
-  remove,
+  remove
 };

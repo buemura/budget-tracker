@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Modal } from "@components/common/Modal";
-import { ModalInput } from "@components/common/Modal/Input";
-import { IAccount } from "@interfaces/account";
-import { accountService } from "@services/http/account-service";
-import { useUserStore } from "@stores/user";
+import { IAccount } from '../../../../interfaces/account';
+import { accountService } from '../../../../services/http/account-service';
+import { useUserStore } from '../../../../stores/user';
+import { Modal } from '../../../common/Modal';
+import { ModalInput } from '../../../common/Modal/Input';
 
 interface ModalUpdateAccountProps {
   isModalOpen: boolean;
@@ -15,7 +15,7 @@ interface ModalUpdateAccountProps {
 export default function ModalUpdateAccount({
   isModalOpen,
   setIsModalOpen,
-  account,
+  account
 }: ModalUpdateAccountProps) {
   const { user } = useUserStore();
   const [isLoading, setIsLoading] = useState(false);
@@ -27,12 +27,12 @@ export default function ModalUpdateAccount({
     setIsLoading(true);
 
     await accountService.update({
-      userId: user?.id || "",
+      userId: user?.id || '',
       accountId: account.id,
       name: name,
       balance: balance,
       icon: icon,
-      accessToken: user?.accessToken || "",
+      accessToken: user?.accessToken || ''
     });
 
     setIsModalOpen(false);
@@ -60,7 +60,7 @@ export default function ModalUpdateAccount({
               value={name}
               onChangeValue={setName}
             />
-          ),
+          )
         },
         {
           input: (
@@ -71,7 +71,7 @@ export default function ModalUpdateAccount({
               value={balance}
               onChangeValue={setBalance}
             />
-          ),
+          )
         },
         {
           input: (
@@ -82,8 +82,8 @@ export default function ModalUpdateAccount({
               value={icon}
               onChangeValue={setIcon}
             />
-          ),
-        },
+          )
+        }
       ]}
     />
   );

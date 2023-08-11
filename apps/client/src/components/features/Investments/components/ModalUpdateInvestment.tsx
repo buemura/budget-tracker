@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { IInvestment } from "../../../../interfaces/investment";
-import { investmentService } from "../../../../services/http/investment-service";
-import { useUserStore } from "../../../../stores/user";
-import { Modal } from "../../../common/Modal";
-import { ModalInput } from "../../../common/Modal/Input";
-import { MESSAGES } from "../helpers/messages";
+import { IInvestment } from '../../../../interfaces/investment';
+import { investmentService } from '../../../../services/http/investment-service';
+import { useUserStore } from '../../../../stores/user';
+import { Modal } from '../../../common/Modal';
+import { ModalInput } from '../../../common/Modal/Input';
+import { MESSAGES } from '../helpers/messages';
 
 interface ModalUpdateInvestmentProps {
   isModalOpen: boolean;
@@ -16,7 +16,7 @@ interface ModalUpdateInvestmentProps {
 export function ModalUpdateInvestment({
   isModalOpen,
   setIsModalOpen,
-  investment,
+  investment
 }: ModalUpdateInvestmentProps) {
   const { user } = useUserStore();
 
@@ -31,13 +31,13 @@ export function ModalUpdateInvestment({
     setIsLoading(true);
 
     await investmentService.update({
-      userId: user?.id || "",
+      userId: user?.id || '',
       investmentId: investment.id,
-      accountId: "",
+      accountId: '',
       category,
       ticker,
       type,
-      accessToken: user?.accessToken || "",
+      accessToken: user?.accessToken || ''
     });
 
     setIsModalOpen(false);
@@ -77,7 +77,7 @@ export function ModalUpdateInvestment({
               value={category}
               onChangeValue={setCategory}
             />
-          ),
+          )
         },
         {
           input: (
@@ -88,7 +88,7 @@ export function ModalUpdateInvestment({
               value={ticker}
               onChangeValue={setTicker}
             />
-          ),
+          )
         },
         {
           input: (
@@ -99,8 +99,8 @@ export function ModalUpdateInvestment({
               value={type}
               onChangeValue={setType}
             />
-          ),
-        },
+          )
+        }
       ]}
     />
   );

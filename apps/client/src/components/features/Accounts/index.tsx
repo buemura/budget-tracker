@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
+import { useState } from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
 
-import { Collapsable } from "@components/common/Collapsable";
-import { IAccounts } from "@interfaces/account";
-import { PaginationMetadata } from "@interfaces/pagination";
-import AccountsData from "./components/AccountsData";
-import ModalNewAccount from "./components/ModalNewAccount";
-import TotalBalance from "./components/TotalBalance";
+import { IAccounts } from '../../../interfaces/account';
+import { PaginationMetadata } from '../../../interfaces/pagination';
+import { Collapsable } from '../../common/Collapsable';
+import AccountsData from './components/AccountsData';
+import ModalNewAccount from './components/ModalNewAccount';
+import TotalBalance from './components/TotalBalance';
 
 interface AccountsProps {
   accounts: IAccounts | null;
@@ -15,12 +15,7 @@ interface AccountsProps {
   setPagination: (data: PaginationMetadata) => void;
 }
 
-export function Accounts({
-  accounts,
-  isLoading,
-  pagination,
-  setPagination,
-}: AccountsProps) {
+export function Accounts({ accounts, isLoading }: AccountsProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (

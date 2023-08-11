@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Modal } from "@components/common/Modal";
-import { ModalInput } from "@components/common/Modal/Input";
-import { IExpense } from "@interfaces/expense";
-import { expenseService } from "@services/http/expense-service";
-import { useUserStore } from "@stores/user";
+import { IExpense } from '../../../../interfaces/expense';
+import { expenseService } from '../../../../services/http/expense-service';
+import { useUserStore } from '../../../../stores/user';
+import { Modal } from '../../../common/Modal';
+import { ModalInput } from '../../../common/Modal/Input';
 
 interface ModalUpdateExpenseProps {
   isModalOpen: boolean;
@@ -15,7 +15,7 @@ interface ModalUpdateExpenseProps {
 export default function ModalUpdateExpense({
   isModalOpen,
   setIsModalOpen,
-  expense,
+  expense
 }: ModalUpdateExpenseProps) {
   const { user } = useUserStore();
 
@@ -29,13 +29,13 @@ export default function ModalUpdateExpense({
     setIsLoading(true);
 
     await expenseService.update({
-      userId: user?.id || "",
+      userId: user?.id || '',
       expenseId: expense.id,
       title,
       imageUrl,
       isPaid,
       isActive,
-      accessToken: user?.accessToken || "",
+      accessToken: user?.accessToken || ''
     });
 
     setIsModalOpen(false);
@@ -63,7 +63,7 @@ export default function ModalUpdateExpense({
               value={title}
               onChangeValue={setTitle}
             />
-          ),
+          )
         },
         {
           input: (
@@ -74,7 +74,7 @@ export default function ModalUpdateExpense({
               value={imageUrl}
               onChangeValue={setImageUrl}
             />
-          ),
+          )
         },
         {
           input: (
@@ -85,7 +85,7 @@ export default function ModalUpdateExpense({
               value={isPaid}
               onChangeValue={setIsPaid}
             />
-          ),
+          )
         },
         {
           input: (
@@ -96,8 +96,8 @@ export default function ModalUpdateExpense({
               value={isActive}
               onChangeValue={setIsActive}
             />
-          ),
-        },
+          )
+        }
       ]}
     />
   );

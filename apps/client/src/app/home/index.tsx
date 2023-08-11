@@ -1,14 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Accounts } from "@components/features/Accounts";
-import { Expenses } from "@components/features/Expenses";
-import { Investments } from "@components/features/Investments";
-import { Navbar } from "@components/features/Navbar";
-import { useCheckAuth } from "@hooks/useCheckAuth";
-import { useFetchAccounts } from "@hooks/useFetchAccounts";
-import { useFetchExpenses } from "@hooks/useFetchExpenses";
-import { useFetchInvestments } from "@hooks/useFetchInvestments";
-import { useUserStore } from "@stores/user";
+import { Expenses } from '../../components/features/Expenses';
+import { Navbar } from '../../components/features/Navbar';
+import { useCheckAuth } from '../../hooks/useCheckAuth';
+// import { useFetchAccounts } from '../../hooks/useFetchAccounts';
+import { useFetchExpenses } from '../../hooks/useFetchExpenses';
+// import { useFetchInvestments } from '../../hooks/useFetchInvestments';
+import { useUserStore } from '../../stores/user';
 
 export default function Home() {
   const { user, logoutUser } = useUserStore();
@@ -20,29 +18,29 @@ export default function Home() {
 
   const defaultPag = {
     page: 1,
-    items: 10,
+    items: 10
   };
 
   const [expensesPagination, setExpensesPagination] = useState(defaultPag);
-  const [accountsPagination, setAccountsPagination] = useState(defaultPag);
-  const [investmentsPagination, setInvestmentsPagination] =
-    useState(defaultPag);
+  // const [accountsPagination, setAccountsPagination] = useState(defaultPag);
+  // const [investmentsPagination, setInvestmentsPagination] =
+  //   useState(defaultPag);
 
   const { expenses, isLoading: isExpensesLoading } = useFetchExpenses({
     user,
     page: expensesPagination.page,
-    items: expensesPagination.items,
+    items: expensesPagination.items
   });
-  const { accounts, isLoading: isAccountsLoading } = useFetchAccounts({
-    user,
-    page: accountsPagination.page,
-    items: accountsPagination.items,
-  });
-  const { investments, isLoading: isInvestmentsLoading } = useFetchInvestments({
-    user,
-    page: investmentsPagination.page,
-    items: investmentsPagination.items,
-  });
+  // const { accounts, isLoading: isAccountsLoading } = useFetchAccounts({
+  //   user,
+  //   page: accountsPagination.page,
+  //   items: accountsPagination.items
+  // });
+  // const { investments, isLoading: isInvestmentsLoading } = useFetchInvestments({
+  //   user,
+  //   page: investmentsPagination.page,
+  //   items: investmentsPagination.items
+  // });
 
   return (
     <div className="min-w-screen min-h-screen bg-gray-100">
@@ -55,7 +53,7 @@ export default function Home() {
           pagination={expensesPagination}
           setPagination={setExpensesPagination}
         />
-        <Accounts
+        {/* <Accounts
           accounts={accounts}
           isLoading={isAccountsLoading}
           pagination={accountsPagination}
@@ -66,7 +64,7 @@ export default function Home() {
           isLoading={isInvestmentsLoading}
           pagination={investmentsPagination}
           setPagination={setInvestmentsPagination}
-        />
+        /> */}
         {/* <Transactions /> */}
       </div>
     </div>

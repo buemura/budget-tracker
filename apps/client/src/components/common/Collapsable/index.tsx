@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import { useState } from 'react';
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 
 interface CollapsableProps {
   title: string;

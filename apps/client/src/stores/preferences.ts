@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 type State = {
   balanceVisible: boolean;
@@ -13,13 +13,13 @@ export const usePreferenceStore = create<State>()(
         balanceVisible: true,
         changeBalanceVisible: () => {
           set((state) => ({
-            balanceVisible: !state.balanceVisible,
+            balanceVisible: !state.balanceVisible
           }));
-        },
+        }
       }),
       {
-        name: "preferences-storage",
-        storage: createJSONStorage(() => localStorage),
+        name: 'preferences-storage',
+        storage: createJSONStorage(() => localStorage)
       }
     )
   )

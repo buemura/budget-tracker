@@ -1,4 +1,4 @@
-import { useUserStore } from "@stores/user";
+import { useUserStore } from '../../../../stores/user';
 
 export default function ProfileImage() {
   const { user } = useUserStore();
@@ -18,7 +18,7 @@ export default function ProfileImage() {
     <img
       className="rounded-full border-2 border-gray-300 cursor-pointer w-14 h-14"
       src={
-        "https://jacksonandmorris.co.uk/wp-content/uploads/2017/04/default-user.png"
+        'https://jacksonandmorris.co.uk/wp-content/uploads/2017/04/default-user.png'
       }
       alt="avatar"
       referrerPolicy="no-referrer"
