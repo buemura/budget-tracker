@@ -17,16 +17,12 @@ export class AuthService {
     private readonly userService: UserService,
   ) {}
 
-  private generateToken(sub: string): LoginResponseDto {
+  private generateToken(sub: string): string {
     const tokenPayload: TokenPayload = {
       sub,
     };
 
-    const accessToken = this.tokenService.generate(tokenPayload);
-    return {
-      id: sub,
-      accessToken,
-    };
+    return this.tokenService.generate(tokenPayload);
   }
 
   async login(data: LoginRequestDto): Promise<LoginResponseDto> {
@@ -43,7 +39,10 @@ export class AuthService {
       throw new UnauthorizedException(ERROR_MESSAGE.INVALID_CREDENTIALS);
     }
 
-    return this.generateToken(user.id);
+    return {
+      accessToken: this.generateToken(user.id),
+      user,
+    };
   }
 
   async register(data: RegisterRequestDto): Promise<User> {

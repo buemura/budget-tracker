@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { User } from '../interfaces/user';
-import { userService } from '../services/http/user-service';
+import { authService } from '../services/http/auth-service';
 import { useRouterNavigate } from './useRouterNavigate';
 
 export const useCheckAuth = (user: User | null) => {
@@ -10,8 +10,7 @@ export const useCheckAuth = (user: User | null) => {
 
   const fetchUserData = async () => {
     try {
-      await userService.getUserData({
-        userId: user?.id || '',
+      await authService.getUserData({
         accessToken: user?.accessToken || ''
       });
     } catch (error) {

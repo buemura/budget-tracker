@@ -11,10 +11,9 @@ type GetUserDataResponseProps = {
 };
 
 async function getUserData({
-  userId,
   accessToken
 }: GetUserDataRequestProps): Promise<GetUserDataResponseProps | null> {
-  const url = `/users/${userId}`;
+  const url = `/auth/me`;
   const { data: response } = await api.get(url, {
     headers: { Authorization: `Bearer ${accessToken}` }
   });
