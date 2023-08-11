@@ -8,6 +8,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 
@@ -18,6 +19,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
+import { PaginationRequestDto } from '@helpers/pagination/dto-transformer';
 import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
 import { CurrentUserId } from '@shared/decorators/current-user.decorator';
 import { UnauthorizedResponseDto } from '@shared/dtos/unauthorized-response.dto';
@@ -35,8 +37,11 @@ export class ExpenseController {
 
   @Get()
   @ApiResponse({ status: HttpStatus.OK })
-  async findAll(@CurrentUserId() userId: string) {
-    return this.expenseService.findAll({ userId });
+  async findMany(
+    @CurrentUserId() userId: string,
+    @Query() pagination: PaginationRequestDto,
+  ) {
+    return this.expenseService.findMany({ userId, pagination });
   }
 
   @Post()

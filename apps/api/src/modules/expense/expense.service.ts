@@ -20,10 +20,14 @@ export class ExpenseService {
     this.logger = new Logger(ExpenseService.name);
   }
 
-  async findAll({ pagination, userId }: FindUserExpensesDto) {
-    const { page = DEFAULT_PAGINATION.PAGE, items = DEFAULT_PAGINATION.ITEMS } =
-      pagination;
-
+  async findMany({
+    pagination = {
+      page: DEFAULT_PAGINATION.PAGE,
+      items: DEFAULT_PAGINATION.ITEMS,
+    },
+    userId,
+  }: FindUserExpensesDto) {
+    const { page, items } = pagination;
     const userExists = await this.userService.getById(userId);
     if (!userExists) {
       this.logger.log(`User ${userId} not found`);
