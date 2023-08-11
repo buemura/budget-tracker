@@ -1,4 +1,15 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateExpenseDto } from './create-expense.dto';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
-export class UpdateExpenseDto extends PartialType(CreateExpenseDto) {}
+export class UpdateExpenseDto {
+  @IsNotEmpty()
+  @IsString()
+  userId: string;
+
+  @IsOptional()
+  @IsString()
+  title?: string;
+
+  @IsOptional()
+  @IsString()
+  imageUrl?: string;
+}

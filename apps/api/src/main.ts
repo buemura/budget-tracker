@@ -8,7 +8,6 @@ import { NestFactory, Reflector } from '@nestjs/core';
 
 import { AllExceptionsFilter } from '@infra/filters/all-exceptions.filter';
 import { LoggerInterceptor } from '@infra/interceptors/logger.interceptor';
-
 import { setupApm } from './config/apm';
 import { setupSwagger } from './config/swagger';
 import { AppModule } from './modules/app.module';

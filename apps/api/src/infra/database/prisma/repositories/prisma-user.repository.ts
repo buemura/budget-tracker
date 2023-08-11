@@ -4,7 +4,6 @@ import { CreateUserDto } from '@modules/user/dtos/create-user.dto';
 import { UpdateUserDto } from '@modules/user/dtos/update-user.dto';
 import { User } from '@modules/user/entities/user';
 import { UserRepository } from '@modules/user/repositories/user.repository';
-
 import { PrismaService } from '../prisma.service';
 
 @Injectable()
@@ -29,7 +28,11 @@ export class PrismaUserRepository implements UserRepository {
 
   async create(data: CreateUserDto): Promise<User> {
     return this.prisma.user.create({
-      data,
+      data: {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      },
     });
   }
 

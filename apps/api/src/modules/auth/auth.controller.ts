@@ -10,8 +10,7 @@ import {
 import {
   ApiBearerAuth,
   ApiConflictResponse,
-  ApiCreatedResponse,
-  ApiOkResponse,
+  ApiResponse,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
@@ -22,10 +21,8 @@ import { User } from '@modules/user/entities/user';
 import { CurrentUser } from '@shared/decorators/current-user.decorator';
 import { ConflictResponseDto } from '@shared/dtos/conflict-response.dto';
 import { UnauthorizedResponseDto } from '@shared/dtos/unauthorized-response.dto';
-
 import { AuthService } from './auth.service';
 import { LoginRequestDto } from './dtos/login-request.dto';
-import { LoginResponseDto } from './dtos/login-response.dto';
 import { RegisterRequestDto } from './dtos/register-request.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
@@ -35,7 +32,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  @ApiCreatedResponse({ type: UserResponseDto })
+  @ApiResponse({ status: HttpStatus.CREATED, type: UserResponseDto })
   @ApiConflictResponse({ type: ConflictResponseDto })
   async register(@Body() body: RegisterRequestDto) {
     return this.authService.register(body);
@@ -43,7 +40,7 @@ export class AuthController {
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ type: LoginResponseDto })
+  @ApiResponse({ status: HttpStatus.OK, type: UserResponseDto })
   @ApiUnauthorizedResponse({ type: UnauthorizedResponseDto })
   async login(@Body() body: LoginRequestDto) {
     return this.authService.login(body);
@@ -52,7 +49,7 @@ export class AuthController {
   @Get('me')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  @ApiOkResponse({ type: UserResponseDto })
+  @ApiResponse({ status: HttpStatus.OK, type: UserResponseDto })
   async getSessionInfo(@CurrentUser() session: User): Promise<UserResponseDto> {
     return excludeKeysFromObject<UserResponseDto>(session, ['password']);
   }

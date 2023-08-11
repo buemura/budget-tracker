@@ -18,7 +18,6 @@ import {
 
 import { CurrentUserId } from '@shared/decorators/current-user.decorator';
 import { UnauthorizedResponseDto } from '@shared/dtos/unauthorized-response.dto';
-
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserResponseDto } from './dtos/user-response.dto';
 import { UserService } from './user.service';
