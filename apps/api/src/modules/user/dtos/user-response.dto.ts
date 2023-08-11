@@ -13,6 +13,9 @@ export class UserResponseDto {
   password: string;
 
   @ApiProperty()
+  profilePicture: string;
+
+  @ApiProperty()
   createdAt: Date;
 
   @ApiProperty()

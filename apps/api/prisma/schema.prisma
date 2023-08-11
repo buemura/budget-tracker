@@ -14,7 +14,7 @@ model User {
   password String?
   // isExternal Boolean
   // externalId String? @map("external_id")
-  // imageUrl String? @map("image_url")
+  imageUrl String? @map("image_url")
 
   createdAt             DateTime                @default(now()) @map("created_at")
   updatedAt             DateTime                @updatedAt @map("updated_at")
