@@ -9,7 +9,7 @@
     "start:dev": "turbo run start:dev",
     "start": "node apps/api/dist/main",
     "generate": "prisma generate --schema=./apps/api/prisma/schema.prisma",
-    "env:up": "docker-compose build && docker-comppose up -d",
+    "env:up": "docker-compose build && docker-compose up -d",
     "env:down": "docker-compose down"
   },
   "keywords": [],

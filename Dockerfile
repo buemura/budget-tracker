@@ -34,4 +34,4 @@ WORKDIR /app
 COPY --from=installer /app .
 
 RUN npx prisma generate --schema=./apps/api/prisma/schema.prisma
-CMD ["npm", "start"]
+CMD ["node", "apps/api/dist/main"]
