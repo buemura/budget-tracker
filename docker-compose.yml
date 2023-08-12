@@ -1,9 +1,12 @@
-version: '3'
+version: "3"
 
 services:
-  myapp:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
+    image: nestjs
+    container_name: nestjs
+    env_file: .env
     ports:
-      - 8080:8080
+      - "8080:8080"

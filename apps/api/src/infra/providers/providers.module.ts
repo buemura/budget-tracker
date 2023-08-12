@@ -3,11 +3,13 @@ import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
 import { PasswordHashService, TokenService } from '@core/cryptography';
+import { PassportModule } from '@nestjs/passport';
 import { BcryptPasswordHashService } from './bcrypt-password-hash.service';
 import { JwtTokenService } from './jwt-token.service';
 
 @Module({
   imports: [
+    PassportModule,
     JwtModule.registerAsync({
       useFactory: (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),

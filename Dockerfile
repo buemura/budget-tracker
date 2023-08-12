@@ -33,6 +33,5 @@ WORKDIR /app
 # Don't run production as root
 COPY --from=installer /app .
 
-RUN ls -l
-RUN npx prisma generate --schema=./api/prisma/schema.prisma
+RUN npx prisma generate --schema=./apps/api/prisma/schema.prisma
 CMD ["npm", "start"]

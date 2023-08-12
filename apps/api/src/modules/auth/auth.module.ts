@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { PassportModule } from '@nestjs/passport';
 
 import { DatabaseModule } from '@infra/database/database.module';
 import { ProvidersModule } from '@infra/providers/providers.module';
@@ -9,7 +8,7 @@ import { AuthService } from './auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
-  imports: [DatabaseModule, UserModule, PassportModule, ProvidersModule],
+  imports: [DatabaseModule, UserModule, ProvidersModule],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
 })
