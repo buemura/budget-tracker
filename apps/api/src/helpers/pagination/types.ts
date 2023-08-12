@@ -25,3 +25,8 @@ export class PaginationQueryParams {
   page?: number;
   items?: number;
 }
+
+export interface FindPaginatedByUserDto {
+  userId: string;
+  pagination?: PaginationQueryParams;
+}

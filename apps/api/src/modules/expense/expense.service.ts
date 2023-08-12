@@ -1,10 +1,12 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 
-import { DEFAULT_PAGINATION } from '@helpers/pagination/constants';
-import { paginationHelper } from '@helpers/pagination/functions';
+import {
+  DEFAULT_PAGINATION,
+  FindPaginatedByUserDto,
+  paginationHelper,
+} from '@helpers/pagination';
 import { UserService } from '@modules/user/user.service';
 import { CreateExpenseDto } from './dtos/create-expense.dto';
-import { FindUserExpensesDto } from './dtos/find-user-expenses.dto';
 import { UpdateExpenseDto } from './dtos/update-expense.dto';
 import { ERROR_MESSAGE } from './errors/messages';
 import { ExpenseRepository } from './repositories/expense.repository';
@@ -21,12 +23,12 @@ export class ExpenseService {
   }
 
   async findMany({
+    userId,
     pagination = {
       page: DEFAULT_PAGINATION.PAGE,
       items: DEFAULT_PAGINATION.ITEMS,
     },
-    userId,
-  }: FindUserExpensesDto) {
+  }: FindPaginatedByUserDto) {
     const { page, items } = pagination;
     const userExists = await this.userService.getById(userId);
     if (!userExists) {

@@ -11,7 +11,6 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-
 import {
   ApiBearerAuth,
   ApiResponse,
@@ -19,21 +18,21 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
-import { PaginationRequestDto } from '@helpers/pagination/dto-transformer';
+import { PaginationRequestDto } from '@helpers/pagination';
 import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
 import { CurrentUserId } from '@shared/decorators/current-user.decorator';
 import { UnauthorizedResponseDto } from '@shared/dtos/unauthorized-response.dto';
-import { CreateExpenseDto } from './dtos/create-expense.dto';
-import { UpdateExpenseDto } from './dtos/update-expense.dto';
-import { ExpenseService } from './expense.service';
+import { AccountService } from './account.service';
+import { CreateAccountDto } from './dtos/create-account.dto';
+import { UpdateAccountDto } from './dtos/update-account.dto';
 
-@ApiTags('Expenses')
+@ApiTags('Accounts')
 @ApiBearerAuth()
 @ApiUnauthorizedResponse({ type: UnauthorizedResponseDto })
-@Controller('expenses')
+@Controller('accounts')
 @UseGuards(JwtAuthGuard)
-export class ExpenseController {
-  constructor(private readonly expenseService: ExpenseService) {}
+export class AccountController {
+  constructor(private readonly accountService: AccountService) {}
 
   @Get()
   @ApiResponse({ status: HttpStatus.OK })
@@ -41,37 +40,31 @@ export class ExpenseController {
     @CurrentUserId() userId: string,
     @Query() pagination: PaginationRequestDto,
   ) {
-    return this.expenseService.findMany({ userId, pagination });
+    return this.accountService.findMany({ userId, pagination });
   }
 
   @Post()
   @ApiResponse({ status: HttpStatus.CREATED })
-  async create(
+  create(
     @CurrentUserId() userId: string,
-    @Body() data: CreateExpenseDto,
+    @Body() data: CreateAccountDto,
   ): Promise<void> {
-    return this.expenseService.create(userId, data);
+    return this.accountService.create(userId, data);
   }
 
   @Patch(':id')
   @ApiResponse({ status: HttpStatus.OK })
-  async update(
+  update(
     @Param('id') id: string,
-    @Body() data: UpdateExpenseDto,
+    @Body() updateAccountDto: UpdateAccountDto,
   ): Promise<void> {
-    return this.expenseService.update(id, data);
+    return this.accountService.update(id, updateAccountDto);
   }
 
   @Delete(':id')
   @ApiResponse({ status: HttpStatus.NO_CONTENT })
   @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id') id: string): Promise<void> {
-    return this.expenseService.remove(id);
-  }
-
-  @Patch()
-  @ApiResponse({ status: HttpStatus.OK })
-  async resetPaymentStatus() {
-    return this.expenseService.resetPaymentStatus();
+  remove(@Param('id') id: string): Promise<void> {
+    return this.accountService.remove(id);
   }
 }
