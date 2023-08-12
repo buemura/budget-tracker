@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "turbo run build",
+    "start:prod": "turbo run build && node apps/api/dist/main",
     "start:dev": "turbo run start:dev",
-    "start": "node apps/api/dist/main"
+    "start": "node apps/api/dist/main",
+    "postinstall": "prisma generate --schema=./api/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
