@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
-import { CreateExpenseDto } from '@modules/expense/dtos/create-expense.dto';
-import { UpdateExpenseDto } from '@modules/expense/dtos/update-expense.dto';
-import { Expense } from '@modules/expense/entities/expense';
-import { ExpenseRepository } from '@modules/expense/repositories/expense.repository';
+import { CreateExpenseDto } from '@api/expense/dtos/create-expense.dto';
+import { UpdateExpenseDto } from '@api/expense/dtos/update-expense.dto';
+import { Expense } from '@domain/expense/entities/expense';
+import { ExpenseRepository } from '@domain/expense/repositories/expense.repository';
 import { PrismaService } from '../prisma.service';
 
 @Injectable()

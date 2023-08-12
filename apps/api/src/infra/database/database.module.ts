@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 
-import { AccountRepository } from '@modules/account/repositories/account.repository';
-import { ExpenseRepository } from '@modules/expense/repositories/expense.repository';
-import { UserRepository } from '@modules/user/repositories/user.repository';
+import { AccountRepository } from '@domain/account/repositories/account.repository';
+import { ExpenseRepository } from '@domain/expense/repositories/expense.repository';
+import { UserRepository } from '@domain/user/repositories/user.repository';
 import { PrismaService } from './prisma/prisma.service';
 import { PrismaAccountRepository } from './prisma/repositories/prisma-account.repository';
 import { PrismaExpenseRepository } from './prisma/repositories/prisma-expense.repository';

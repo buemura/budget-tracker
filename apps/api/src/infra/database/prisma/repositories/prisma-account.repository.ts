@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
-import { CreateAccountDto } from '@modules/account/dtos/create-account.dto';
-import { UpdateAccountDto } from '@modules/account/dtos/update-account.dto';
-import { Account } from '@modules/account/entities/account';
-import { AccountRepository } from '@modules/account/repositories/account.repository';
+import { CreateAccountDto } from '@api/account/dtos/create-account.dto';
+import { UpdateAccountDto } from '@api/account/dtos/update-account.dto';
+import { Account } from '@domain/account/entities/account';
+import { AccountRepository } from '@domain/account/repositories/account.repository';
 import { PrismaService } from '../prisma.service';
 
 @Injectable()
