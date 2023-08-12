@@ -1,5 +1,5 @@
-import { LoginUserUseCase } from '@core/auth/usecases/login-user.usecase';
-import { RegisterUserUseCase } from '@core/auth/usecases/register-user.usecase';
+import { LoginUserUseCase } from '@domain/auth/usecases/login-user.usecase';
+import { RegisterUserUseCase } from '@domain/auth/usecases/register-user.usecase';
 import { ProvidersModule } from '@infra/providers/providers.module';
 import { UsersModule } from '@modules/users/users.module';
 import { PassportModule } from '@nestjs/passport';

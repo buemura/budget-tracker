@@ -1,4 +1,4 @@
-export class SetCacheDto {
+export interface ISetCache {
   key: string;
   value: any;
 }

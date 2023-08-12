@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { compareSync, hashSync } from 'bcrypt';
 
-import { PasswordHashService } from '@core/cryptography';
+import { PasswordHashService } from '@domain/cryptography/contracts';
 
 @Injectable()
 export class BcryptPasswordHashService implements PasswordHashService {

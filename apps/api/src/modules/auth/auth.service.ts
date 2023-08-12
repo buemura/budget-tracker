@@ -1,6 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
-import { PasswordHashService, TokenService } from '@core/cryptography';
+import {
+  PasswordHashService,
+  TokenService,
+} from '@domain/cryptography/contracts';
 import { User } from '@modules/user/entities/user';
 import { UserService } from '@modules/user/user.service';
 import { LoginRequestDto } from './dtos/login-request.dto';

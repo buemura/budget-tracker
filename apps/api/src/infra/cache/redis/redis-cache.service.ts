@@ -2,9 +2,9 @@ import { BadGatewayException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Redis from 'ioredis';
 
-import { CacheService } from '@core/cache/cache.service';
-import { SetCacheDto } from '@core/cache/dtos/set-cache.dto';
-import { ERROR_MESSAGE } from '@core/cache/errors/message';
+import { CacheService } from '@domain/cache/contracts/cache.service';
+import { ISetCache } from '@domain/cache/dtos/set-cache.interface';
+import { ERROR_MESSAGE } from '@domain/cache/errors/message';
 
 @Injectable()
 export class RedisCacheService implements CacheService {
@@ -26,7 +26,7 @@ export class RedisCacheService implements CacheService {
     }
   }
 
-  async set(data: SetCacheDto): Promise<void> {
+  async set(data: ISetCache): Promise<void> {
     try {
       await this.client.set(data.key, JSON.stringify(data.value));
     } catch (error) {

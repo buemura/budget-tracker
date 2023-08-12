@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
-import { TokenService } from '@core/cryptography';
+import { TokenService } from '@domain/cryptography/contracts';
 import { TokenPayload } from '@modules/auth/dtos/token-payload.dto';
 
 @Injectable()

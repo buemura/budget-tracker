@@ -3,10 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
+import { AccountModule } from './account/account.module';
 import { AuthModule } from './auth/auth.module';
 import { ExpenseModule } from './expense/expense.module';
 import { UserModule } from './user/user.module';
-import { AccountModule } from './account/account.module';
 
 @Module({
   imports: [
