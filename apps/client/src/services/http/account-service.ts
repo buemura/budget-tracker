@@ -3,7 +3,6 @@ import { PaginationMetadata } from '../../interfaces/pagination';
 import { api } from './api';
 
 type FetchAllProps = {
-  userId: string;
   accessToken: string;
   pagination?: PaginationMetadata;
 };
@@ -32,11 +31,10 @@ type RemoveProps = {
 };
 
 async function fetchAll({
-  userId,
   accessToken,
   pagination
 }: FetchAllProps): Promise<IAccounts> {
-  const url = `/users/${userId}/accounts?page=${pagination?.page}&items=${pagination?.items}`;
+  const url = `/accounts?page=${pagination?.page}&items=${pagination?.items}`;
   const { data: response } = await api.get(url, {
     headers: { Authorization: `Bearer ${accessToken}` }
   });
@@ -51,7 +49,7 @@ async function create({
   accessToken
 }: CreateProps): Promise<any> {
   try {
-    const url = `/users/${userId}/accounts`;
+    const url = `/accounts`;
     const body = { userId, name, balance, icon };
     const { data: response } = await api.post(url, body, {
       headers: { Authorization: `Bearer ${accessToken}` }
@@ -71,8 +69,8 @@ async function update({
   accessToken
 }: UpdateProps): Promise<any> {
   try {
-    const url = `/users/${userId}/accounts/${accountId}`;
-    const body = { name, balance, icon };
+    const url = `/accounts/${accountId}`;
+    const body = { userId, name, balance, icon };
     const { data: response } = await api.patch(url, body, {
       headers: { Authorization: `Bearer ${accessToken}` }
     });

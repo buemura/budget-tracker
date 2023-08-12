@@ -19,7 +19,6 @@ export const useFetchAccounts = ({ user, page, items }: IUseFetchProps) => {
     try {
       setIsLoading(true);
       const result = await accountService.fetchAll({
-        userId: user?.id || '',
         accessToken: user?.accessToken || '',
         pagination
       });

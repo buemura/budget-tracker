@@ -36,8 +36,8 @@ async function fetchAll({
 }
 
 async function create({
-  title,
   userId,
+  title,
   imageUrl,
   accessToken
 }: CreateProps): Promise<any> {
