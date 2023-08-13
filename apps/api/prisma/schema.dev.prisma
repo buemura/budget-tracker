@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = "postgresql://admin:admin@localhost:5432/budget?schema=public"
+    provider = "sqlite"
+    url      = "file:./dev.db"
 }
 
 model User {
