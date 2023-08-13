@@ -30,7 +30,7 @@ type RemoveProps = {
   accessToken: string;
 };
 
-async function fetchAll({
+async function fetchMany({
   accessToken,
   pagination
 }: FetchAllProps): Promise<IAccounts> {
@@ -93,7 +93,7 @@ async function remove({
 }
 
 export const accountService = {
-  fetchAll,
+  fetchMany,
   create,
   update,
   remove

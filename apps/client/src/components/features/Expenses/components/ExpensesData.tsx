@@ -3,7 +3,7 @@ import { LoaderSpinner } from '../../../common/Loader';
 import { Expense } from './Expense';
 
 interface ExpensesDataProps {
-  expenses: IExpense[] | null;
+  expenses: IExpense[] | null | undefined;
   isLoading: boolean;
 }
 

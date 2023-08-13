@@ -9,7 +9,7 @@ import ModalNewAccount from './components/ModalNewAccount';
 import TotalBalance from './components/TotalBalance';
 
 interface AccountsProps {
-  accounts: IAccounts | null;
+  accounts: IAccounts | null | undefined;
   isLoading: boolean;
   pagination: PaginationMetadata;
   setPagination: (data: PaginationMetadata) => void;

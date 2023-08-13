@@ -8,7 +8,7 @@ import ExpensesData from './components/ExpensesData';
 import ModalNewExpense from './components/ModalNewExpense';
 
 interface ExpensesProps {
-  expenses: IExpense[] | null;
+  expenses: IExpense[] | null | undefined;
   isLoading: boolean;
   pagination: PaginationMetadata;
   setPagination: (data: PaginationMetadata) => void;

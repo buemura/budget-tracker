@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import { useQuery } from 'react-query';
 
 import { Expenses } from '../../components/features/Expenses';
 import { Navbar } from '../../components/features/Navbar';
 import { useCheckAuth } from '../../hooks/useCheckAuth';
-import { useFetchAccounts } from '../../hooks/useFetchAccounts';
-import { useFetchExpenses } from '../../hooks/useFetchExpenses';
 // import { useFetchInvestments } from '../../hooks/useFetchInvestments';
 import { Accounts } from '../../components/features/Accounts';
 import { useUserStore } from '../../stores/user';
+import { fetchAccounts } from './utils/fetchAccounts';
+import { fetchExpenses } from './utils/fetchExpenses';
 
 export default function Home() {
   const { user, logoutUser } = useUserStore();
@@ -27,16 +28,16 @@ export default function Home() {
   // const [investmentsPagination, setInvestmentsPagination] =
   //   useState(defaultPag);
 
-  const { expenses, isLoading: isExpensesLoading } = useFetchExpenses({
-    user,
-    page: expensesPagination.page,
-    items: expensesPagination.items
-  });
-  const { accounts, isLoading: isAccountsLoading } = useFetchAccounts({
-    user,
-    page: accountsPagination.page,
-    items: accountsPagination.items
-  });
+  const { data: expenses, isLoading: isExpensesLoading } = useQuery(
+    'expenses',
+    () => fetchExpenses(user?.accessToken, expensesPagination)
+  );
+
+  const { data: accounts, isLoading: isAccountsLoading } = useQuery(
+    'accounts',
+    () => fetchAccounts(user?.accessToken, accountsPagination)
+  );
+
   // const { investments, isLoading: isInvestmentsLoading } = useFetchInvestments({
   //   user,
   //   page: investmentsPagination.page,

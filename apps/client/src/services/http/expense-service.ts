@@ -24,7 +24,7 @@ type UpdateProps = {
   accessToken: string;
 };
 
-async function fetchAll({
+async function fetchMany({
   accessToken,
   pagination
 }: FetchAllProps): Promise<IExpense[]> {
@@ -75,7 +75,7 @@ async function update({
 }
 
 export const expenseService = {
-  fetchAll,
+  fetchMany,
   create,
   update
 };

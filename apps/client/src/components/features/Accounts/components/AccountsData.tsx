@@ -8,7 +8,7 @@ import { LoaderSpinner } from '../../../common/Loader';
 import Account from './Account';
 
 interface AccountsDataProps {
-  accounts: IAccounts | null;
+  accounts: IAccounts | null | undefined;
   isLoading: boolean;
 }
 
