@@ -6,7 +6,7 @@ import {
   RemoveExpenseUsecase,
   ResetExpensesPaymentStatusUsecase,
   UpdateExpenseUsecase,
-} from '@application/expense';
+} from '@usecases/expense';
 import { ExpenseController } from '../expense.controller';
 
 describe('ExpenseController', () => {

@@ -18,9 +18,9 @@ import {
 
 import { UpdateUserDto } from '@api/user/dtos/update-user.dto';
 import { UserResponseDto } from '@api/user/dtos/user-response.dto';
-import { RemoveUserUsecase, UpdateUserUsecase } from '@application/user';
 import { CurrentUserId } from '@helpers/decorators/current-user.decorator';
 import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
+import { RemoveUserUsecase, UpdateUserUsecase } from '@usecases/user';
 
 @ApiTags('Users')
 @ApiBearerAuth()

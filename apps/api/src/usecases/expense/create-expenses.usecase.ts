@@ -1,9 +1,9 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 
-import { GetUserByIdUsecase } from '@application/user';
 import { ERROR_MESSAGE } from '@domain/expense/errors/messages';
 import { ICreateExpense } from '@domain/expense/interfaces/expense.interface';
 import { ExpenseRepository } from '@domain/expense/repositories/expense.repository';
+import { GetUserByIdUsecase } from '@usecases/user';
 
 @Injectable()
 export class CreateExpenseUsecase {

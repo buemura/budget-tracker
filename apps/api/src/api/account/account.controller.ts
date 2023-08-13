@@ -21,15 +21,15 @@ import {
 import { CreateAccountDto } from '@api/account/dtos/create-account.dto';
 import { UpdateAccountDto } from '@api/account/dtos/update-account.dto';
 import { JwtAuthGuard } from '@api/auth/guards/jwt-auth.guard';
+import { CurrentUserId } from '@helpers/decorators/current-user.decorator';
+import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
+import { PaginationRequestDto } from '@helpers/pagination';
 import {
   CreateAccountUsecase,
   GetAccountsByUserUsecase,
   RemoveAccountUsecase,
   UpdateAccountUsecase,
-} from '@application/account';
-import { CurrentUserId } from '@helpers/decorators/current-user.decorator';
-import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
-import { PaginationRequestDto } from '@helpers/pagination';
+} from '@usecases/account';
 
 @ApiTags('Accounts')
 @ApiBearerAuth()

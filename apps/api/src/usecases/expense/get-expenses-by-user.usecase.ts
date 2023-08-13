@@ -1,6 +1,5 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 
-import { GetUserByIdUsecase } from '@application/user';
 import { ERROR_MESSAGE } from '@domain/expense/errors/messages';
 import { ExpenseRepository } from '@domain/expense/repositories/expense.repository';
 import {
@@ -8,6 +7,7 @@ import {
   IFindPaginatedByUser,
   paginationHelper,
 } from '@helpers/pagination';
+import { GetUserByIdUsecase } from '@usecases/user';
 
 @Injectable()
 export class GetExpensesByUserUsecase {

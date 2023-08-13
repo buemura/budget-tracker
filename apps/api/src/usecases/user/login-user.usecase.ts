@@ -1,6 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
-import { GetUserByEmailUsecase } from '@application/user';
 import {
   PasswordHashService,
   TokenService,
@@ -11,6 +10,7 @@ import {
   ILoginResponse,
   ILoginUser,
 } from '@domain/user/interfaces/user.interface';
+import { GetUserByEmailUsecase } from '@usecases/user';
 
 @Injectable()
 export class LoginUserUsecase {

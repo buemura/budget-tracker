@@ -20,16 +20,16 @@ import {
 } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@api/auth/guards/jwt-auth.guard';
+import { CurrentUserId } from '@helpers/decorators/current-user.decorator';
+import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
+import { PaginationRequestDto } from '@helpers/pagination/dto-transformer';
 import {
   CreateExpenseUsecase,
   GetExpensesByUserUsecase,
   RemoveExpenseUsecase,
   ResetExpensesPaymentStatusUsecase,
   UpdateExpenseUsecase,
-} from '@application/expense';
-import { CurrentUserId } from '@helpers/decorators/current-user.decorator';
-import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
-import { PaginationRequestDto } from '@helpers/pagination/dto-transformer';
+} from '@usecases/expense';
 import { CreateExpenseDto } from './dtos/create-expense.dto';
 import { UpdateExpenseDto } from './dtos/update-expense.dto';
 
