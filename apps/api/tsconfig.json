@@ -17,9 +17,9 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "resolveJsonModule": true,
     "paths": {
       "@api/*": ["src/api/*"],
-      "@application/*": ["src/usecases/*"],
       "@core/*": ["src/core/*"],
       "@domain/*": ["src/domain/*"],
       "@helpers/*": ["src/helpers/*"],

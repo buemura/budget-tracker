@@ -37,9 +37,9 @@ export class UserController {
   @ApiOkResponse({ type: UserResponseDto })
   async update(
     @CurrentUserId() userId: string,
-    @Body() updateUserDto: UpdateUserDto,
+    @Body() data: UpdateUserDto,
   ): Promise<UserResponseDto> {
-    return this.updateUserUsecase.execute(userId, updateUserDto);
+    return this.updateUserUsecase.execute(userId, data);
   }
 
   @Delete()
