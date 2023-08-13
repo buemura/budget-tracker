@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { IntlProvider } from 'react-intl';
-import App from './app/App';
-import './styles/globals.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { IntlProvider } from "react-intl";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+import "./styles/globals.css";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <IntlProvider locale={navigator.language}>
       <App />

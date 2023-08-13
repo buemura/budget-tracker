@@ -1,7 +1,7 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { RouterProvider } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from "react-query";
+import { RouterProvider } from "react-router-dom";
 
-import { router } from '../helpers/routes';
+import { router } from "./router";
 
 const queryClient = new QueryClient();
 

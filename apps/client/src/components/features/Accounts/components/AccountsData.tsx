@@ -1,11 +1,11 @@
-import { IAccounts } from '../../../../interfaces/account';
-import PieChart from '../../../common/Charts/PieChart';
+import { IAccounts } from "../../../../interfaces/account";
+import PieChart from "../../../common/Charts/PieChart";
 import {
   backgroundColor,
-  borderColor
-} from '../../../common/Charts/helpers/constants';
-import { LoaderSpinner } from '../../../common/Loader';
-import Account from './Account';
+  borderColor,
+} from "../../../common/Charts/utils/constants";
+import { LoaderSpinner } from "../../../common/Loader";
+import Account from "./Account";
 
 interface AccountsDataProps {
   accounts: IAccounts | null | undefined;
@@ -14,7 +14,7 @@ interface AccountsDataProps {
 
 export default function AccountsData({
   isLoading,
-  accounts
+  accounts,
 }: AccountsDataProps) {
   if (isLoading) {
     return (
@@ -43,12 +43,12 @@ export default function AccountsData({
             labels: accounts?.metricsData.map((account) => account.name),
             datasets: [
               {
-                label: 'Balance',
+                label: "Balance",
                 data: accounts?.metricsData.map((account) => account.balance),
                 backgroundColor: backgroundColor,
-                borderColor: borderColor
-              }
-            ]
+                borderColor: borderColor,
+              },
+            ],
           }}
         />
       </div>

@@ -1,18 +1,18 @@
-import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FormEvent, useState } from "react";
+import { Link } from "react-router-dom";
 
-import { Button } from '../../../components/features/AuthForm/Button';
-import { Input } from '../../../components/features/AuthForm/Input';
-import { useRouterNavigate } from '../../../hooks/useRouterNavigate';
-import { authService } from '../../../services/http/auth-service';
+import { Button } from "../../components/features/AuthForm/Button";
+import { Input } from "../../components/features/AuthForm/Input";
+import { useRouterNavigate } from "../../hooks/useRouterNavigate";
+import { authService } from "../../services/http/auth-service";
 
-export default function Register() {
+export function Register() {
   const { routerNavigate } = useRouterNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,9 +21,9 @@ export default function Register() {
     try {
       await authService.register({ name, email, password });
       setIsLoading(false);
-      return routerNavigate('/auth/login');
+      return routerNavigate("/auth/login");
     } catch (error: any) {
-      alert('Registration failed');
+      alert("Registration failed");
       location.reload();
     }
   };
@@ -45,7 +45,7 @@ export default function Register() {
 
         <div className="flex mt-4">
           <p className=" text-neutral-400">Already registered?&nbsp;</p>
-          <Link className="text-neutral-500 hover:underline" to={'/auth/login'}>
+          <Link className="text-neutral-500 hover:underline" to={"/auth/login"}>
             Click hete to sign in
           </Link>
         </div>
