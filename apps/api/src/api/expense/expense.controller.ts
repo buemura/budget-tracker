@@ -20,12 +20,18 @@ import {
 } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@api/auth/guards/jwt-auth.guard';
+import {
+  CreateExpenseUsecase,
+  GetExpensesByUserUsecase,
+  RemoveExpenseUsecase,
+  ResetExpensesPaymentStatusUsecase,
+  UpdateExpenseUsecase,
+} from '@application/expense';
 import { PaginationRequestDto } from '@helpers/pagination/dto-transformer';
 import { CurrentUserId } from '@shared/decorators/current-user.decorator';
 import { UnauthorizedResponseDto } from '@shared/dtos/unauthorized-response.dto';
 import { CreateExpenseDto } from './dtos/create-expense.dto';
 import { UpdateExpenseDto } from './dtos/update-expense.dto';
-import { ExpenseService } from './expense.service';
 
 @ApiTags('Expenses')
 @ApiBearerAuth()
@@ -33,7 +39,13 @@ import { ExpenseService } from './expense.service';
 @Controller('expenses')
 @UseGuards(JwtAuthGuard)
 export class ExpenseController {
-  constructor(private readonly expenseService: ExpenseService) {}
+  constructor(
+    private readonly getExpensesByUserUsecase: GetExpensesByUserUsecase,
+    private readonly createExpenseUsecase: CreateExpenseUsecase,
+    private readonly updateExpenseUsecase: UpdateExpenseUsecase,
+    private readonly resetExpensesPaymentStatusUsecase: ResetExpensesPaymentStatusUsecase,
+    private readonly removeExpenseUsecase: RemoveExpenseUsecase,
+  ) {}
 
   @Get()
   @ApiResponse({ status: HttpStatus.OK })
@@ -41,7 +53,7 @@ export class ExpenseController {
     @CurrentUserId() userId: string,
     @Query() pagination: PaginationRequestDto,
   ) {
-    return this.expenseService.findMany({ userId, pagination });
+    return this.getExpensesByUserUsecase.execute({ userId, pagination });
   }
 
   @Post()
@@ -50,7 +62,7 @@ export class ExpenseController {
     @CurrentUserId() userId: string,
     @Body() data: CreateExpenseDto,
   ): Promise<void> {
-    return this.expenseService.create(userId, data);
+    return this.createExpenseUsecase.execute(userId, data);
   }
 
   @Patch(':id')
@@ -59,19 +71,19 @@ export class ExpenseController {
     @Param('id') id: string,
     @Body() data: UpdateExpenseDto,
   ): Promise<void> {
-    return this.expenseService.update(id, data);
+    return this.updateExpenseUsecase.execute(id, data);
   }
 
   @Delete(':id')
   @ApiResponse({ status: HttpStatus.NO_CONTENT })
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id') id: string): Promise<void> {
-    return this.expenseService.remove(id);
+    return this.removeExpenseUsecase.execute(id);
   }
 
   @Patch()
   @ApiResponse({ status: HttpStatus.OK })
   async resetPaymentStatus() {
-    return this.expenseService.resetPaymentStatus();
+    return this.resetExpensesPaymentStatusUsecase.execute();
   }
 }

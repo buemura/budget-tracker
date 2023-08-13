@@ -1,6 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
+
+import {
+  CreateExpenseUsecase,
+  GetExpensesByUserUsecase,
+  RemoveExpenseUsecase,
+  ResetExpensesPaymentStatusUsecase,
+  UpdateExpenseUsecase,
+} from '@application/expense';
 import { ExpenseController } from '../expense.controller';
-import { ExpenseService } from '../expense.service';
 
 describe('ExpenseController', () => {
   let controller: ExpenseController;
@@ -8,7 +15,13 @@ describe('ExpenseController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ExpenseController],
-      providers: [ExpenseService],
+      providers: [
+        GetExpensesByUserUsecase,
+        CreateExpenseUsecase,
+        UpdateExpenseUsecase,
+        ResetExpensesPaymentStatusUsecase,
+        RemoveExpenseUsecase,
+      ],
     }).compile();
 
     controller = module.get<ExpenseController>(ExpenseController);

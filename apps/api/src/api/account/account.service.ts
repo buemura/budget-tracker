@@ -3,7 +3,7 @@ import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { GetUserByIdUsecase } from '@application/user/get-user-by-id.usecase';
 import {
   DEFAULT_PAGINATION,
-  FindPaginatedByUserDto,
+  IFindPaginatedByUser,
   paginationHelper,
 } from '@helpers/pagination';
 import { ERROR_MESSAGE } from '../../domain/account/errors/messages';
@@ -28,7 +28,7 @@ export class AccountService {
       page: DEFAULT_PAGINATION.PAGE,
       items: DEFAULT_PAGINATION.ITEMS,
     },
-  }: FindPaginatedByUserDto) {
+  }: IFindPaginatedByUser) {
     const user = await this.getUserByIdUsecase.execute(userId);
     if (!user) {
       this.logger.log(`User ${userId} not found`);
