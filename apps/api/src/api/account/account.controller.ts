@@ -22,9 +22,9 @@ import { AccountService } from '@api/account/account.service';
 import { CreateAccountDto } from '@api/account/dtos/create-account.dto';
 import { UpdateAccountDto } from '@api/account/dtos/update-account.dto';
 import { JwtAuthGuard } from '@api/auth/guards/jwt-auth.guard';
+import { CurrentUserId } from '@helpers/decorators/current-user.decorator';
+import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
 import { PaginationRequestDto } from '@helpers/pagination';
-import { CurrentUserId } from '@shared/decorators/current-user.decorator';
-import { UnauthorizedResponseDto } from '@shared/dtos/unauthorized-response.dto';
 
 @ApiTags('Accounts')
 @ApiBearerAuth()

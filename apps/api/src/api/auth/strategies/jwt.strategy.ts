@@ -4,7 +4,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 import { GetUserByIdUsecase } from '@application/user/get-user-by-id.usecase';
-import { TokenPayload } from '../dtos/token-payload.dto';
+import { ITokenPayload } from '@domain/cryptography/interfaces/token.interface';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -21,7 +21,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  public async validate(payload: TokenPayload): Promise<any> {
+  public async validate(payload: ITokenPayload): Promise<any> {
     const { sub } = payload;
     const session = await this.getUserByIdUsecase.execute(sub);
 

@@ -27,9 +27,9 @@ import {
   ResetExpensesPaymentStatusUsecase,
   UpdateExpenseUsecase,
 } from '@application/expense';
+import { CurrentUserId } from '@helpers/decorators/current-user.decorator';
+import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
 import { PaginationRequestDto } from '@helpers/pagination/dto-transformer';
-import { CurrentUserId } from '@shared/decorators/current-user.decorator';
-import { UnauthorizedResponseDto } from '@shared/dtos/unauthorized-response.dto';
 import { CreateExpenseDto } from './dtos/create-expense.dto';
 import { UpdateExpenseDto } from './dtos/update-expense.dto';
 
