@@ -3,7 +3,6 @@ import { Navbar } from '../../components/features/Navbar';
 import { useCheckAuth } from '../../hooks/useCheckAuth';
 // import { useFetchInvestments } from '../../hooks/useFetchInvestments';
 import { Accounts } from '../../components/features/Accounts';
-import { Investments } from '../../components/features/Investments';
 import { useUserStore } from '../../stores/user';
 
 export default function Home() {
@@ -21,7 +20,7 @@ export default function Home() {
       <div className="flex flex-col p-2">
         <Expenses />
         <Accounts />
-        <Investments />
+        {/* <Investments /> */}
         {/* <Transactions /> */}
       </div>
     </div>
