@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "turbo run build",
-    "start:prod": "turbo run build && node apps/api/dist/main",
-    "start:dev": "turbo run start:dev",
+    "start:dev": "turbo run build && turbo run start:dev",
     "start": "node apps/api/dist/main",
     "generate": "prisma generate --schema=./apps/api/prisma/schema.prisma",
     "env:up": "docker-compose build && docker-compose up -d",
