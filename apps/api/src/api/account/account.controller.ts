@@ -18,10 +18,15 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
-import { AccountService } from '@api/account/account.service';
 import { CreateAccountDto } from '@api/account/dtos/create-account.dto';
 import { UpdateAccountDto } from '@api/account/dtos/update-account.dto';
 import { JwtAuthGuard } from '@api/auth/guards/jwt-auth.guard';
+import {
+  CreateAccountUsecase,
+  GetAccountsByUserUsecase,
+  RemoveAccountUsecase,
+  UpdateAccountUsecase,
+} from '@application/account';
 import { CurrentUserId } from '@helpers/decorators/current-user.decorator';
 import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
 import { PaginationRequestDto } from '@helpers/pagination';
@@ -32,7 +37,12 @@ import { PaginationRequestDto } from '@helpers/pagination';
 @Controller('accounts')
 @UseGuards(JwtAuthGuard)
 export class AccountController {
-  constructor(private readonly accountService: AccountService) {}
+  constructor(
+    private readonly getAccountsByUserUsecase: GetAccountsByUserUsecase,
+    private readonly createAccountUsecase: CreateAccountUsecase,
+    private readonly updateAccountUsecase: UpdateAccountUsecase,
+    private readonly removeAccountUsecase: RemoveAccountUsecase,
+  ) {}
 
   @Get()
   @ApiResponse({ status: HttpStatus.OK })
@@ -40,7 +50,7 @@ export class AccountController {
     @CurrentUserId() userId: string,
     @Query() pagination: PaginationRequestDto,
   ) {
-    return this.accountService.findMany({ userId, pagination });
+    return this.getAccountsByUserUsecase.execute({ userId, pagination });
   }
 
   @Post()
@@ -49,7 +59,7 @@ export class AccountController {
     @CurrentUserId() userId: string,
     @Body() data: CreateAccountDto,
   ): Promise<void> {
-    return this.accountService.create(userId, data);
+    return this.createAccountUsecase.execute(userId, data);
   }
 
   @Patch(':id')
@@ -58,13 +68,13 @@ export class AccountController {
     @Param('id') id: string,
     @Body() updateAccountDto: UpdateAccountDto,
   ): Promise<void> {
-    return this.accountService.update(id, updateAccountDto);
+    return this.updateAccountUsecase.execute(id, updateAccountDto);
   }
 
   @Delete(':id')
   @ApiResponse({ status: HttpStatus.NO_CONTENT })
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string): Promise<void> {
-    return this.accountService.remove(id);
+    return this.removeAccountUsecase.execute(id);
   }
 }

@@ -3,8 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import Redis from 'ioredis';
 
 import { CacheService } from '@domain/cache/contracts/cache.service';
-import { ISetCache } from '@domain/cache/dtos/set-cache.interface';
 import { ERROR_MESSAGE } from '@domain/cache/errors/message';
+import { ISetCache } from '@domain/cache/interfaces/set-cache.interface';
 
 @Injectable()
 export class RedisCacheService implements CacheService {

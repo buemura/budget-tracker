@@ -3,9 +3,9 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './api/app.module';
-import { setupApm } from './config/apm';
-import { setupMiddleware } from './config/middlewares';
-import { setupSwagger } from './config/swagger';
+import { setupApm } from './infra/config/apm';
+import { setupMiddleware } from './infra/config/middlewares';
+import { setupSwagger } from './infra/config/swagger';
 
 async function bootstrap() {
   const configService = new ConfigService();

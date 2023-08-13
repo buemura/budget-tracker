@@ -1,4 +1,4 @@
-import { ISetCache } from '../dtos/set-cache.interface';
+import { ISetCache } from '../interfaces/set-cache.interface';
 
 export abstract class CacheService {
   abstract get<T>(key: string): Promise<T | null>;
