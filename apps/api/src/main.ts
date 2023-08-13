@@ -1,10 +1,6 @@
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
 
 import { AppModule } from './api/app.module';
 import { setupApm } from './infra/config/apm';
@@ -15,10 +11,7 @@ async function bootstrap() {
   const configService = new ConfigService();
   setupApm(configService);
 
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter(),
-  );
+  const app = await NestFactory.create(AppModule);
   const logger = new Logger('Application');
 
   logger.log(`Setting up middlewares...`);
