@@ -5,7 +5,7 @@ import { investmentService } from '../../../../services/http/investment-service'
 import { useUserStore } from '../../../../stores/user';
 import { Modal } from '../../../common/Modal';
 import { ModalInput } from '../../../common/Modal/Input';
-import { MESSAGES } from '../helpers/messages';
+import { MESSAGES } from '../utils/messages';
 
 interface ModalUpdateInvestmentProps {
   isModalOpen: boolean;

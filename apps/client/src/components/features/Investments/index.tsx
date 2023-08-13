@@ -1,29 +1,28 @@
 import { useState } from 'react';
 import { FaPlusCircle } from 'react-icons/fa';
 import { FiRefreshCw } from 'react-icons/fi';
+import { useQuery } from 'react-query';
 
-import { IInvestment } from '../../../interfaces/investment';
-import { PaginationMetadata } from '../../../interfaces/pagination';
+import { defaultPagination } from '../../../helpers/pagination';
 import { investmentService } from '../../../services/http/investment-service';
 import { useUserStore } from '../../../stores/user';
 import { Collapsable } from '../../common/Collapsable';
 import { LoaderSpinner } from '../../common/Loader';
 import InvestmentsData from './components/InvestmentsData';
 import { ModalNewInvestment } from './components/ModalNewInvestment';
-import { MESSAGES } from './helpers/messages';
+import { fetchInvestments } from './utils/fetchInvestments';
+import { MESSAGES } from './utils/messages';
 
-interface InvestmentsProps {
-  investments: IInvestment[] | null;
-  isLoading: boolean;
-  pagination: PaginationMetadata;
-  setPagination: (data: PaginationMetadata) => void;
-}
-
-export function Investments({ investments, isLoading }: InvestmentsProps) {
+export function Investments() {
   const { user } = useUserStore();
 
+  const [pagination] = useState(defaultPagination);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPriceUpdateLoading, setIsPriceUpdateLoading] = useState(false);
+
+  const { data, isLoading } = useQuery('investments', () =>
+    fetchInvestments(user?.accessToken, pagination)
+  );
 
   const handleInvestmentsPricesUpdate = async () => {
     setIsPriceUpdateLoading(true);
@@ -62,7 +61,7 @@ export function Investments({ investments, isLoading }: InvestmentsProps) {
         />
       </div>
 
-      <InvestmentsData isLoading={isLoading} investments={investments} />
+      <InvestmentsData isLoading={isLoading} investments={data} />
 
       <ModalNewInvestment
         isModalOpen={isModalOpen}

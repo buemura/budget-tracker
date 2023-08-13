@@ -1,22 +1,24 @@
 import { useState } from 'react';
 import { FaPlusCircle } from 'react-icons/fa';
+import { useQuery } from 'react-query';
 
-import { IAccounts } from '../../../interfaces/account';
-import { PaginationMetadata } from '../../../interfaces/pagination';
+import { defaultPagination } from '../../../helpers/pagination';
+import { useUserStore } from '../../../stores/user';
 import { Collapsable } from '../../common/Collapsable';
 import AccountsData from './components/AccountsData';
 import ModalNewAccount from './components/ModalNewAccount';
 import TotalBalance from './components/TotalBalance';
+import { fetchAccounts } from './utils/fetchAccounts';
 
-interface AccountsProps {
-  accounts: IAccounts | null | undefined;
-  isLoading: boolean;
-  pagination: PaginationMetadata;
-  setPagination: (data: PaginationMetadata) => void;
-}
+export function Accounts() {
+  const { user } = useUserStore();
 
-export function Accounts({ accounts, isLoading }: AccountsProps) {
+  const [pagination] = useState(defaultPagination);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { data, isLoading } = useQuery('accounts', () =>
+    fetchAccounts(user?.accessToken, pagination)
+  );
 
   return (
     <Collapsable title="My accounts">
@@ -27,10 +29,10 @@ export function Accounts({ accounts, isLoading }: AccountsProps) {
         />
       </div>
 
-      <TotalBalance totalBalance={accounts?.totalBalance || 0} />
+      <TotalBalance totalBalance={data?.totalBalance || 0} />
       <div className="border border-gray-100 mb-4" />
 
-      <AccountsData isLoading={isLoading} accounts={accounts} />
+      <AccountsData isLoading={isLoading} accounts={data} />
 
       <ModalNewAccount
         isModalOpen={isModalOpen}

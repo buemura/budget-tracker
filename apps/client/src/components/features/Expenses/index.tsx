@@ -1,21 +1,23 @@
 import { useState } from 'react';
 import { FaPlusCircle } from 'react-icons/fa';
+import { useQuery } from 'react-query';
 
-import { IExpense } from '../../../interfaces/expense';
-import { PaginationMetadata } from '../../../interfaces/pagination';
+import { defaultPagination } from '../../../helpers/pagination';
+import { useUserStore } from '../../../stores/user';
 import { Collapsable } from '../../common/Collapsable';
 import ExpensesData from './components/ExpensesData';
 import ModalNewExpense from './components/ModalNewExpense';
+import { fetchExpenses } from './utils/fetchExpenses';
 
-interface ExpensesProps {
-  expenses: IExpense[] | null | undefined;
-  isLoading: boolean;
-  pagination: PaginationMetadata;
-  setPagination: (data: PaginationMetadata) => void;
-}
+export function Expenses() {
+  const { user } = useUserStore();
 
-export function Expenses({ expenses, isLoading }: ExpensesProps) {
+  const [pagination] = useState(defaultPagination);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { data, isLoading } = useQuery('expenses', () =>
+    fetchExpenses(user?.accessToken, pagination)
+  );
 
   return (
     <Collapsable title="My recurrent expenses">
@@ -26,7 +28,7 @@ export function Expenses({ expenses, isLoading }: ExpensesProps) {
         />
       </div>
 
-      <ExpensesData isLoading={isLoading} expenses={expenses} />
+      <ExpensesData isLoading={isLoading} expenses={data} />
 
       <ModalNewExpense
         isModalOpen={isModalOpen}

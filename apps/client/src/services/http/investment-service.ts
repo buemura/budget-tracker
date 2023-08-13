@@ -2,8 +2,7 @@ import { IInvestment } from '../../interfaces/investment';
 import { PaginationMetadata } from '../../interfaces/pagination';
 import { api } from './api';
 
-type FetchAllProps = {
-  userId: string;
+type FetchManyProps = {
   accessToken: string;
   pagination?: PaginationMetadata;
 };
@@ -32,12 +31,11 @@ type UpdatePricesProps = {
   accessToken: string;
 };
 
-async function fetchAll({
-  userId,
+async function fetchMany({
   accessToken,
   pagination
-}: FetchAllProps): Promise<IInvestment[]> {
-  const url = `/users/${userId}/investments?page=${pagination?.page}&items=${pagination?.items}`;
+}: FetchManyProps): Promise<IInvestment[]> {
+  const url = `/investments?page=${pagination?.page}&items=${pagination?.items}`;
   const { data: response } = await api.get(url, {
     headers: { Authorization: `Bearer ${accessToken}` }
   });
@@ -101,7 +99,7 @@ async function updatePrices({
 }
 
 export const investmentService = {
-  fetchAll,
+  fetchMany,
   create,
   update,
   updatePrices

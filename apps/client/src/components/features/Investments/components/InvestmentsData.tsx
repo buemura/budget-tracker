@@ -4,7 +4,7 @@ import { IInvestment } from '../../../../interfaces/investment';
 import { LoaderSpinner } from '../../../common/Loader';
 
 interface InvestmentsDataProps {
-  investments: IInvestment[] | null;
+  investments: IInvestment[] | null | undefined;
   isLoading: boolean;
 }
 
