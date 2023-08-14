@@ -1,14 +1,13 @@
-import { useState } from 'react';
-import { FaPlusCircle } from 'react-icons/fa';
-import { useQuery } from 'react-query';
+import { useState } from "react";
+import { FaPlusCircle } from "react-icons/fa";
 
-import { defaultPagination } from '../../../helpers/pagination';
-import { useUserStore } from '../../../stores/user';
-import { Collapsable } from '../../common/Collapsable';
-import AccountsData from './components/AccountsData';
-import ModalNewAccount from './components/ModalNewAccount';
-import TotalBalance from './components/TotalBalance';
-import { fetchAccounts } from './utils/fetchAccounts';
+import { defaultPagination } from "../../../helpers/pagination";
+import { useUserStore } from "../../../stores/user";
+import { Collapsable } from "../../common/Collapsable";
+import AccountsData from "./components/AccountsData";
+import ModalNewAccount from "./components/ModalNewAccount";
+import TotalBalance from "./components/TotalBalance";
+import { useFetchAccounts } from "./hooks/useFetchAccounts";
 
 export function Accounts() {
   const { user } = useUserStore();
@@ -16,9 +15,7 @@ export function Accounts() {
   const [pagination] = useState(defaultPagination);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, isLoading } = useQuery('accounts', () =>
-    fetchAccounts(user?.accessToken, pagination)
-  );
+  const { data, isLoading } = useFetchAccounts(user, pagination);
 
   return (
     <Collapsable title="My accounts">

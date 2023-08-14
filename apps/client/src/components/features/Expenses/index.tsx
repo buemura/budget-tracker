@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import { FaPlusCircle } from 'react-icons/fa';
-import { useQuery } from 'react-query';
+import { useState } from "react";
+import { FaPlusCircle } from "react-icons/fa";
 
-import { defaultPagination } from '../../../helpers/pagination';
-import { useUserStore } from '../../../stores/user';
-import { Collapsable } from '../../common/Collapsable';
-import ExpensesData from './components/ExpensesData';
-import ModalNewExpense from './components/ModalNewExpense';
-import { fetchExpenses } from './utils/fetchExpenses';
+import { defaultPagination } from "../../../helpers/pagination";
+import { useUserStore } from "../../../stores/user";
+import { Collapsable } from "../../common/Collapsable";
+import ExpensesData from "./components/ExpensesData";
+import ModalNewExpense from "./components/ModalNewExpense";
+import { useFetchExpenses } from "./hooks/useFetchExpenses";
 
 export function Expenses() {
   const { user } = useUserStore();
@@ -15,9 +14,7 @@ export function Expenses() {
   const [pagination] = useState(defaultPagination);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, isLoading } = useQuery('expenses', () =>
-    fetchExpenses(user?.accessToken, pagination)
-  );
+  const { data, isLoading } = useFetchExpenses(user, pagination);
 
   return (
     <Collapsable title="My recurrent expenses">

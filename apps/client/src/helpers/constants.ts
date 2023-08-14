@@ -1,9 +1,14 @@
 export const EXPENSES_DEFAULT_PAGINATION = {
   PAGE: 1,
-  ITEMS: 10
+  ITEMS: 10,
 };
 
 export const ACCOUNTS_DEFAULT_PAGINATION = {
   PAGE: 1,
-  ITEMS: 10
+  ITEMS: 10,
+};
+
+export const INVESTMENTS_DEFAULT_PAGINATION = {
+  PAGE: 1,
+  ITEMS: 10,
 };

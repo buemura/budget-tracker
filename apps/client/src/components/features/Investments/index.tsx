@@ -1,17 +1,16 @@
-import { useState } from 'react';
-import { FaPlusCircle } from 'react-icons/fa';
-import { FiRefreshCw } from 'react-icons/fi';
-import { useQuery } from 'react-query';
+import { useState } from "react";
+import { FaPlusCircle } from "react-icons/fa";
+import { FiRefreshCw } from "react-icons/fi";
 
-import { defaultPagination } from '../../../helpers/pagination';
-import { investmentService } from '../../../services/http/investment-service';
-import { useUserStore } from '../../../stores/user';
-import { Collapsable } from '../../common/Collapsable';
-import { LoaderSpinner } from '../../common/Loader';
-import InvestmentsData from './components/InvestmentsData';
-import { ModalNewInvestment } from './components/ModalNewInvestment';
-import { fetchInvestments } from './utils/fetchInvestments';
-import { MESSAGES } from './utils/messages';
+import { defaultPagination } from "../../../helpers/pagination";
+import { investmentService } from "../../../services/http/investment-service";
+import { useUserStore } from "../../../stores/user";
+import { Collapsable } from "../../common/Collapsable";
+import { LoaderSpinner } from "../../common/Loader";
+import InvestmentsData from "./components/InvestmentsData";
+import { ModalNewInvestment } from "./components/ModalNewInvestment";
+import { MESSAGES } from "./utils/messages";
+import { useFetchInvestments } from "./hooks/useFetchInvestments";
 
 export function Investments() {
   const { user } = useUserStore();
@@ -20,16 +19,14 @@ export function Investments() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPriceUpdateLoading, setIsPriceUpdateLoading] = useState(false);
 
-  const { data, isLoading } = useQuery('investments', () =>
-    fetchInvestments(user?.accessToken, pagination)
-  );
+  const { data, isLoading } = useFetchInvestments(user, pagination);
 
   const handleInvestmentsPricesUpdate = async () => {
     setIsPriceUpdateLoading(true);
 
     await investmentService.updatePrices({
-      userId: user?.id ?? '',
-      accessToken: user?.accessToken ?? ''
+      userId: user?.id ?? "",
+      accessToken: user?.accessToken ?? "",
     });
 
     setIsPriceUpdateLoading(false);
