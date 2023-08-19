@@ -4,7 +4,7 @@ import {
   backgroundColor,
   borderColor,
 } from "../../../common/Charts/utils/constants";
-import { LoaderSpinner } from "../../../common/Loader";
+import { LoaderSpinner } from "../../../common/Loader/LoaderSpinner";
 import Account from "./Account";
 
 interface AccountsDataProps {

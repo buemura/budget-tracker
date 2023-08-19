@@ -6,11 +6,11 @@ import { defaultPagination } from "../../../helpers/pagination";
 import { investmentService } from "../../../services/http/investment-service";
 import { useUserStore } from "../../../stores/user";
 import { Collapsable } from "../../common/Collapsable";
-import { LoaderSpinner } from "../../common/Loader";
+import { LoaderSpinner } from "../../common/Loader/LoaderSpinner";
 import InvestmentsData from "./components/InvestmentsData";
 import { ModalNewInvestment } from "./components/ModalNewInvestment";
-import { MESSAGES } from "./utils/messages";
 import { useFetchInvestments } from "./hooks/useFetchInvestments";
+import { MESSAGES } from "./utils/messages";
 
 export function Investments() {
   const { user } = useUserStore();

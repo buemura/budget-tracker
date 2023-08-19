@@ -1,9 +1,9 @@
 import { useQuery } from "react-query";
 
-import { User } from "../../../../interfaces/user";
-import { PaginationMetadata } from "../../../../interfaces/pagination";
-import { expenseService } from "../../../../services/http/expense-service";
 import { EXPENSES_DEFAULT_PAGINATION } from "../../../../helpers/constants";
+import { PaginationMetadata } from "../../../../interfaces/pagination";
+import { User } from "../../../../interfaces/user";
+import { expenseService } from "../../../../services/http/expense-service";
 
 const fetchExpenses = async (
   accessToken: string | null | undefined,

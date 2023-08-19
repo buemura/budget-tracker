@@ -1,6 +1,6 @@
-import { IExpense } from '../../../../interfaces/expense';
-import { LoaderSpinner } from '../../../common/Loader';
-import { Expense } from './Expense';
+import { IExpense } from "../../../../interfaces/expense";
+import { LoaderSpinner } from "../../../common/Loader/LoaderSpinner";
+import { Expense } from "./Expense";
 
 interface ExpensesDataProps {
   expenses: IExpense[] | null | undefined;
@@ -9,7 +9,7 @@ interface ExpensesDataProps {
 
 export default function ExpensesData({
   isLoading,
-  expenses
+  expenses,
 }: ExpensesDataProps) {
   if (isLoading) {
     return (

@@ -1,4 +1,4 @@
-import { LoaderSpinner } from "../../common/Loader";
+import { LoaderSpinner } from "../../common/Loader/LoaderSpinner";
 
 interface ButtonProps {
   label: string;

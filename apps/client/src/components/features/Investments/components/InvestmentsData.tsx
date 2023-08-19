@@ -1,7 +1,7 @@
-import { FormattedNumber } from 'react-intl';
+import { FormattedNumber } from "react-intl";
 
-import { IInvestment } from '../../../../interfaces/investment';
-import { LoaderSpinner } from '../../../common/Loader';
+import { IInvestment } from "../../../../interfaces/investment";
+import { LoaderSpinner } from "../../../common/Loader/LoaderSpinner";
 
 interface InvestmentsDataProps {
   investments: IInvestment[] | null | undefined;
@@ -10,7 +10,7 @@ interface InvestmentsDataProps {
 
 export default function InvestmentsData({
   isLoading,
-  investments
+  investments,
 }: InvestmentsDataProps) {
   if (isLoading) {
     return (
@@ -76,21 +76,21 @@ export default function InvestmentsData({
                 <FormattedNumber
                   value={investment.totalPaidPrice}
                   style="currency"
-                  currency={investment.ticker.includes('SA') ? 'BRL' : 'USD'}
+                  currency={investment.ticker.includes("SA") ? "BRL" : "USD"}
                 />
               </td>
               <td className="border border-neutral-300 pl-1">
                 <FormattedNumber
                   value={investment.pricePerQuantity}
                   style="currency"
-                  currency={investment.ticker.includes('SA') ? 'BRL' : 'USD'}
+                  currency={investment.ticker.includes("SA") ? "BRL" : "USD"}
                 />
               </td>
               <td className="border border-neutral-300 pl-1">
                 <FormattedNumber
                   value={investment.totalPrice}
                   style="currency"
-                  currency={investment.ticker.includes('SA') ? 'BRL' : 'USD'}
+                  currency={investment.ticker.includes("SA") ? "BRL" : "USD"}
                 />
               </td>
             </tr>
