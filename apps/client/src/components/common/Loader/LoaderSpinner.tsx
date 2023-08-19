@@ -1,12 +1,12 @@
-import { Oval } from 'react-loader-spinner';
+import { Oval } from "react-loader-spinner";
 import {
   loaderHeight,
   loaderPrimaryColor,
   loaderSecondaryColor,
   loaderStrokeWidth,
   loaderStrokeWidthSecondary,
-  loaderWidth
-} from '../helpers';
+  loaderWidth,
+} from "./helpers";
 
 interface LoaderProps {
   primaryColor?: string;
@@ -25,7 +25,7 @@ export function LoaderSpinner({
   strokeWidth,
   strokeWidthSecondary,
   width,
-  height
+  height,
 }: LoaderProps) {
   return (
     <Oval
