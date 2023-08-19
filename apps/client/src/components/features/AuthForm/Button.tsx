@@ -1,4 +1,4 @@
-import { LoaderSpinner } from '../../../common/Loader';
+import { LoaderSpinner } from "../../common/Loader";
 
 interface ButtonProps {
   label: string;
@@ -18,8 +18,8 @@ export function Button({ label, isLoading = false }: ButtonProps) {
           height={20}
           strokeWidth={8}
           strokeWidthSecondary={8}
-          primaryColor={'#ffffff'}
-          secondaryColor={'#bcbcbc'}
+          primaryColor={"#ffffff"}
+          secondaryColor={"#bcbcbc"}
         />
       </button>
     );
