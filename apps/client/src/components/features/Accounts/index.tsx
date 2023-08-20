@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { PlusButton } from "@components/common/Buttons/PlusButton";
 import { defaultPagination } from "../../../helpers/pagination";
 import { useUserStore } from "../../../stores/user";
+import { PlusButton } from "../../common/Buttons/PlusButton";
 import { Collapsable } from "../../common/Collapsable";
 import { AccountsData } from "./components/AccountsData";
 import { ModalNewAccount } from "./components/ModalNewAccount";
