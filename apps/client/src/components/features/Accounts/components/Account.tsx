@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { FormattedDate, FormattedNumber } from 'react-intl';
+import { useState } from "react";
+import { FormattedDate, FormattedNumber } from "react-intl";
 
-import { IAccount } from '../../../../interfaces/account';
-import { usePreferenceStore } from '../../../../stores/preferences';
-import ModalUpdateAccount from './ModalUpdateAccount';
+import { IAccount } from "../../../../interfaces/account";
+import { usePreferenceStore } from "../../../../stores/preferences";
+import ModalUpdateAccount from "./ModalUpdateAccount";
 
 interface AccountProps {
   account: IAccount;
@@ -24,7 +24,7 @@ export default function Account({ account }: AccountProps) {
             className="rounded-full border-2 border-gray-300 w-9 h-9"
             src={
               account.icon ||
-              'https://www.caltrain.com/files/images/2021-09/default.jpg'
+              "https://www.caltrain.com/files/images/2021-09/default.jpg"
             }
             alt="expense"
             referrerPolicy="no-referrer"
@@ -45,7 +45,7 @@ export default function Account({ account }: AccountProps) {
 
         <div className="flex items-end gap-3">
           {balanceVisible ? (
-            <span className="text-base font-semibold py-1 text-blue-800">
+            <span className="text-base font-semibold py-1 text-primary-text">
               <FormattedNumber
                 value={account.balance}
                 style="currency"
@@ -53,7 +53,7 @@ export default function Account({ account }: AccountProps) {
               />
             </span>
           ) : (
-            <span className="text-base font-semibold py-1 text-blue-800">
+            <span className="text-base font-semibold py-1 text-primary-text">
               R$ •••••
             </span>
           )}

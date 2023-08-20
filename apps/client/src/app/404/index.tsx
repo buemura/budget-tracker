@@ -11,7 +11,7 @@ export function NotFound() {
     <div className="w-screen h-screen flex flex-col justify-center items-center">
       <h1>Oops! You&apos;ve reached a non explored area...</h1>
       <button
-        className="bg-blue-500 text-white p-2 rounded-md"
+        className="bg-primary text-white p-2 rounded-md"
         onClick={handleGoBack}
       >
         Go back to Home

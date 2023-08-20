@@ -19,7 +19,7 @@ export function Navbar({ user }: NavbarProps) {
   };
 
   return (
-    <nav className="flex justify-between py-8 px-5 items-center bg-blue-500 md:pl-28 lg:pl-64">
+    <nav className="flex justify-between py-8 px-5 items-center bg-primary md:pl-28 lg:pl-64">
       <div className="flex gap-6">
         <ProfileImageWithMenu onLogout={handleSignOut} onEdit={handleEdit} />
 

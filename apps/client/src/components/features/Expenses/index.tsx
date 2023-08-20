@@ -18,7 +18,8 @@ export function Expenses() {
 
   return (
     <Collapsable title="✅ Recurrent Expenses">
-      <div className="flex justify-end">
+      <div className="flex items-center justify-end">
+        {/* <ExpenseFilter /> */}
         <PlusButton onClick={() => setIsModalOpen(true)} />
       </div>
 

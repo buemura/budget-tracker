@@ -9,7 +9,7 @@ export function Button({ label, isLoading = false }: ButtonProps) {
   if (isLoading) {
     return (
       <button
-        className="w-full p-2 flex justify-center items-center bg-blue-700 text-white text-base"
+        className="w-full p-2 flex justify-center items-center bg-primary text-white text-base"
         type="submit"
         disabled={true}
       >
@@ -27,7 +27,7 @@ export function Button({ label, isLoading = false }: ButtonProps) {
 
   return (
     <button
-      className="w-full p-2 text-white text-base bg-blue-700 hover:bg-blue-900"
+      className="w-full p-2 text-white text-base bg-primary hover:bg-secondary"
       type="submit"
     >
       {label}

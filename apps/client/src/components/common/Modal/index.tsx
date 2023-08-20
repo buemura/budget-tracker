@@ -38,14 +38,14 @@ export function Modal({
 
             <div className="flex">
               <button
-                className="w-1/2 bg-black text-white font-semibold p-2"
+                className="w-1/2 bg-neutral-600 text-white font-semibold p-2"
                 onClick={onCancel}
               >
                 Cancel
               </button>
               {isLoading ? (
                 <button
-                  className="w-1/2 bg-blue-500 text-white font-semibold p-2 flex justify-center items-center"
+                  className="w-1/2 bg-primary text-white font-semibold p-2 flex justify-center items-center"
                   disabled={true}
                 >
                   <LoaderSpinner
@@ -59,7 +59,7 @@ export function Modal({
                 </button>
               ) : (
                 <button
-                  className="w-1/2 bg-blue-500 text-white font-semibold p-2"
+                  className="w-1/2 bg-primary text-white font-semibold p-2"
                   onClick={onSave}
                 >
                   Save

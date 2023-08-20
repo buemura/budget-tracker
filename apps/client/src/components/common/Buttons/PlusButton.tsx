@@ -7,7 +7,7 @@ interface PlusButtonProps {
 export function PlusButton({ onClick }: PlusButtonProps) {
   return (
     <FiPlusCircle
-      className="my-4 text-2xl cursor-pointer text-blue-600 hover:text-blue-700"
+      className="my-4 text-2xl cursor-pointer text-primary hover:text-secondary"
       onClick={onClick}
     />
   );
