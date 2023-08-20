@@ -1,5 +1,5 @@
-import { User } from '../../interfaces/user';
-import { api } from './api';
+import { User } from "../../interfaces/user";
+import { api } from "./api";
 
 type LoginRequestProps = {
   email: string;
@@ -7,7 +7,7 @@ type LoginRequestProps = {
 };
 
 type LoginResponseProps = {
-  user: any;
+  user: User;
   accessToken: string;
 };
 
@@ -25,13 +25,9 @@ type GetUserDataRequestProps = {
   accessToken: string;
 };
 
-type GetUserDataResponseProps = {
-  user: User;
-};
-
 async function login({
   email,
-  password
+  password,
 }: LoginRequestProps): Promise<LoginResponseProps | null> {
   try {
     const url = `/auth/login`;
@@ -46,7 +42,7 @@ async function login({
 async function register({
   name,
   email,
-  password
+  password,
 }: RegisterRequestProps): Promise<RegisterResponseProps | null> {
   try {
     const url = `/auth/register`;
@@ -59,21 +55,17 @@ async function register({
 }
 
 async function getUserData({
-  accessToken
-}: GetUserDataRequestProps): Promise<GetUserDataResponseProps | null> {
+  accessToken,
+}: GetUserDataRequestProps): Promise<User> {
   const url = `/auth/me`;
   const { data: response } = await api.get(url, {
-    headers: { Authorization: `Bearer ${accessToken}` }
+    headers: { Authorization: `Bearer ${accessToken}` },
   });
   return response?.data;
 }
 
-export const userService = {
-  getUserData
-};
-
 export const authService = {
   login,
   register,
-  getUserData
+  getUserData,
 };

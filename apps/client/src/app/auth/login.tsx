@@ -25,7 +25,7 @@ export function Login() {
         id: data?.user.id || "",
         name: data?.user.name || "",
         email: data?.user.email || "",
-        imageUrl: data?.user.imageUrl || "",
+        profilePicture: data?.user.profilePicture || "",
         accessToken: data?.accessToken || "",
       });
       setIsLoading(false);

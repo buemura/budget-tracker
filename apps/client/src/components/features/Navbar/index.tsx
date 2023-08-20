@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 import { User } from "../../../interfaces/user";
 import { useUserStore } from "../../../stores/user";
+import ModalUpdateProfile from "./components/ModalUpdateProfile";
 import { ProfileImageWithMenu } from "./components/ProfileImageWithMenu";
 
 interface NavbarProps {
@@ -8,6 +11,7 @@ interface NavbarProps {
 
 export function Navbar({ user }: NavbarProps) {
   const { logoutUser } = useUserStore();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSignOut = () => {
     logoutUser();
@@ -15,7 +19,7 @@ export function Navbar({ user }: NavbarProps) {
   };
 
   const handleEdit = () => {
-    location.reload();
+    setIsModalOpen(true);
   };
 
   return (
@@ -28,6 +32,11 @@ export function Navbar({ user }: NavbarProps) {
           <h2 className="text-lg font-semibold text-white">{user?.name}</h2>
         </div>
       </div>
+
+      <ModalUpdateProfile
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </nav>
   );
 }
