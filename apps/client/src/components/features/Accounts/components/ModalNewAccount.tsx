@@ -1,34 +1,34 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import { accountService } from '../../../../services/http/account-service';
-import { useUserStore } from '../../../../stores/user';
-import { Modal } from '../../../common/Modal';
-import { ModalInput } from '../../../common/Modal/Input';
+import { accountService } from "../../../../services/http/account-service";
+import { useUserStore } from "../../../../stores/user";
+import { Modal } from "../../../common/Modal";
+import { ModalInput } from "../../../common/Modal/Input";
 
 interface ModalNewAccountProps {
   isModalOpen: boolean;
   setIsModalOpen: (value: boolean) => void;
 }
 
-export default function ModalNewAccount({
+export function ModalNewAccount({
   isModalOpen,
-  setIsModalOpen
+  setIsModalOpen,
 }: ModalNewAccountProps) {
   const { user } = useUserStore();
   const [isLoading, setIsLoading] = useState(false);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [balance, setBalance] = useState(1);
-  const [icon, setIcon] = useState('');
+  const [icon, setIcon] = useState("");
 
   const handleSaveNew = async () => {
     setIsLoading(true);
 
     await accountService.create({
-      userId: user?.id || '',
+      userId: user?.id || "",
       name: name,
       balance: balance,
       icon: icon,
-      accessToken: user?.accessToken || ''
+      accessToken: user?.accessToken || "",
     });
 
     setIsModalOpen(false);
@@ -57,7 +57,7 @@ export default function ModalNewAccount({
               value={name}
               onChangeValue={setName}
             />
-          )
+          ),
         },
         {
           input: (
@@ -68,7 +68,7 @@ export default function ModalNewAccount({
               value={balance}
               onChangeValue={setBalance}
             />
-          )
+          ),
         },
         {
           input: (
@@ -79,8 +79,8 @@ export default function ModalNewAccount({
               value={icon}
               onChangeValue={setIcon}
             />
-          )
-        }
+          ),
+        },
       ]}
       onCancel={handleCancel}
       onSave={handleSaveNew}

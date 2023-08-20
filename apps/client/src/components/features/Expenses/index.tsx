@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
 
 import { defaultPagination } from "../../../helpers/pagination";
 import { useUserStore } from "../../../stores/user";
+import { PlusButton } from "../../common/Buttons/PlusButton";
 import { Collapsable } from "../../common/Collapsable";
 import ExpensesData from "./components/ExpensesData";
 import ModalNewExpense from "./components/ModalNewExpense";
@@ -19,10 +19,7 @@ export function Expenses() {
   return (
     <Collapsable title="✅ Recurrent Expenses">
       <div className="flex justify-end">
-        <FaPlusCircle
-          className="my-4 text-2xl cursor-pointer text-blue-600 hover:text-blue-700"
-          onClick={() => setIsModalOpen(true)}
-        />
+        <PlusButton onClick={() => setIsModalOpen(true)} />
       </div>
 
       <ExpensesData isLoading={isLoading} expenses={data} />

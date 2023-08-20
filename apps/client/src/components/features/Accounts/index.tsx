@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
 
+import { PlusButton } from "@components/common/Buttons/PlusButton";
 import { defaultPagination } from "../../../helpers/pagination";
 import { useUserStore } from "../../../stores/user";
 import { Collapsable } from "../../common/Collapsable";
-import AccountsData from "./components/AccountsData";
-import ModalNewAccount from "./components/ModalNewAccount";
-import TotalBalance from "./components/TotalBalance";
+import { AccountsData } from "./components/AccountsData";
+import { ModalNewAccount } from "./components/ModalNewAccount";
+import { TotalBalance } from "./components/TotalBalance";
 import { useFetchAccounts } from "./hooks/useFetchAccounts";
 
 export function Accounts() {
@@ -20,10 +20,7 @@ export function Accounts() {
   return (
     <Collapsable title="🏦 Accounts">
       <div className="flex justify-end">
-        <FaPlusCircle
-          className="my-4 text-2xl cursor-pointer text-blue-600 hover:text-blue-700"
-          onClick={() => setIsModalOpen(true)}
-        />
+        <PlusButton onClick={() => setIsModalOpen(true)} />
       </div>
 
       <TotalBalance totalBalance={data?.totalBalance || 0} />

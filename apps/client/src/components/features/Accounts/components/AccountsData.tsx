@@ -12,10 +12,7 @@ interface AccountsDataProps {
   isLoading: boolean;
 }
 
-export default function AccountsData({
-  isLoading,
-  accounts,
-}: AccountsDataProps) {
+export function AccountsData({ isLoading, accounts }: AccountsDataProps) {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center mt-4">
