@@ -18,7 +18,7 @@ export function Accounts() {
   const { data, isLoading } = useFetchAccounts(user, pagination);
 
   return (
-    <Collapsable title="My accounts">
+    <Collapsable title="🏦 Accounts">
       <div className="flex justify-end">
         <FaPlusCircle
           className="my-4 text-2xl cursor-pointer text-blue-600 hover:text-blue-700"

@@ -17,7 +17,7 @@ export function Expenses() {
   const { data, isLoading } = useFetchExpenses(user, pagination);
 
   return (
-    <Collapsable title="My recurrent expenses">
+    <Collapsable title="✅ Recurrent Expenses">
       <div className="flex justify-end">
         <FaPlusCircle
           className="my-4 text-2xl cursor-pointer text-blue-600 hover:text-blue-700"
