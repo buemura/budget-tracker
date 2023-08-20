@@ -1,7 +1,7 @@
+import { Accounts } from "../../components/features/Accounts";
 import { Expenses } from "../../components/features/Expenses";
 import { Navbar } from "../../components/features/Navbar";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
-import { Accounts } from "../../components/features/Accounts";
 import { useUserStore } from "../../stores/user";
 
 export function Home() {
