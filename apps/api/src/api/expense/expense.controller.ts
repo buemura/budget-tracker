@@ -11,7 +11,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-
+import { Cron, CronExpression } from '@nestjs/schedule';
 import {
   ApiBearerAuth,
   ApiResponse,
@@ -81,8 +81,7 @@ export class ExpenseController {
     return this.removeExpenseUsecase.execute(id);
   }
 
-  @Patch()
-  @ApiResponse({ status: HttpStatus.OK })
+  @Cron(CronExpression.EVERY_1ST_DAY_OF_MONTH_AT_MIDNIGHT)
   async resetPaymentStatus() {
     return this.resetExpensesPaymentStatusUsecase.execute();
   }
