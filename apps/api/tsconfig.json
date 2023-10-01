@@ -20,13 +20,13 @@
     "resolveJsonModule": true,
     "paths": {
       "@api/*": ["src/api/*"],
-      "@core/*": ["src/core/*"],
+      "@application/*": ["src/application/*"],
       "@domain/*": ["src/domain/*"],
       "@helpers/*": ["src/helpers/*"],
       "@infra/*": ["src/infra/*"],
       "@modules/*": ["src/api/*"],
       "@shared/*": ["src/shared/*"],
-      "@usecases/*": ["src/usecases/*"]
+      "@usecases/*": ["src/application/*"]
     }
   }
 }

@@ -1,9 +1,9 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 
+import { GetUserByIdUsecase } from '@application/user';
 import { ERROR_MESSAGE } from '@domain/account/errors/messages';
 import { ICreateAccount } from '@domain/account/interfaces/account.interface';
 import { AccountRepository } from '@domain/account/repositories/account.repository';
-import { GetUserByIdUsecase } from '@usecases/user';
 
 @Injectable()
 export class CreateAccountUsecase {

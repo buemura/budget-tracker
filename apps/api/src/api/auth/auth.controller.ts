@@ -16,12 +16,12 @@ import {
 } from '@nestjs/swagger';
 
 import { UserResponseDto } from '@api/user/dtos/user-response.dto';
+import { CreateUserUsecase, LoginUserUsecase } from '@application/user';
 import { User } from '@domain/user/entities/user';
 import { CurrentUser } from '@helpers/decorators/current-user.decorator';
 import { ConflictResponseDto } from '@helpers/dtos/conflict-response.dto';
 import { UnauthorizedResponseDto } from '@helpers/dtos/unauthorized-response.dto';
 import { excludeKeysFromObject } from '@helpers/exclude';
-import { CreateUserUsecase, LoginUserUsecase } from '@usecases/user';
 import { LoginRequestDto } from './dtos/login-request.dto';
 import { RegisterRequestDto } from './dtos/register-request.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';

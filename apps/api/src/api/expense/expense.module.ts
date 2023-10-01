@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 
 import { UserModule } from '@api/user/user.module';
-import { DatabaseModule } from '@infra/database/database.module';
 import {
   CreateExpenseUsecase,
   GetExpensesByUserUsecase,
   RemoveExpenseUsecase,
   ResetExpensesPaymentStatusUsecase,
   UpdateExpenseUsecase,
-} from '@usecases/expense';
+} from '@application/expense';
+import { DatabaseModule } from '@infra/database/database.module';
 import { ExpenseController } from './expense.controller';
 
 @Module({

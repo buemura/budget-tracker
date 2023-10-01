@@ -16,6 +16,7 @@ export class CreateUserUsecase {
 
   async execute(data: ICreateUser): Promise<User> {
     const user = await this.userRepository.findByEmail(data.email);
+
     if (user) {
       throw new ConflictException(ERROR_MESSAGE.USER_ALREADY_EXIST);
     }

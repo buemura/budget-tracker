@@ -6,6 +6,7 @@
   "scripts": {
     "build": "turbo run build",
     "start:dev": "turbo run build && turbo run start:dev",
+    "start:prod": "turbo run build && turbo run start:prod",
     "start": "node apps/api/dist/main",
     "generate": "prisma generate --schema=./apps/api/prisma/schema.prisma",
     "env:up": "docker-compose build && docker-compose up -d",

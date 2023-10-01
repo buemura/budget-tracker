@@ -3,8 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
+import { GetUserByIdUsecase } from '@application/user/get-user-by-id.usecase';
 import { ITokenPayload } from '@domain/cryptography/interfaces/token.interface';
-import { GetUserByIdUsecase } from '@usecases/user/get-user-by-id.usecase';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
