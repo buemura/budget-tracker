@@ -1,4 +1,11 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class CreateExpenseDto {
   @IsNotEmpty()
@@ -8,6 +15,12 @@ export class CreateExpenseDto {
   @IsNotEmpty()
   @IsString()
   title: string;
+
+  @IsNotEmpty()
+  @IsInt()
+  @Min(1)
+  @Max(31)
+  dueDay: number;
 
   @IsOptional()
   @IsString()

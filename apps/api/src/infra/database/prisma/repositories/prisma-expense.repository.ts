@@ -21,9 +21,14 @@ export class PrismaExpenseRepository implements ExpenseRepository {
   }
 
   async findByUserId(userId: string): Promise<Expense[]> {
-    return this.prisma.expense.findMany({
-      where: { userId },
-    });
+    try {
+      return this.prisma.expense.findMany({
+        where: { userId },
+      });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 
   async create(data: CreateExpenseDto): Promise<Expense> {
@@ -31,6 +36,7 @@ export class PrismaExpenseRepository implements ExpenseRepository {
       data: {
         userId: data.userId,
         title: data.title,
+        dueDay: data.dueDay,
         imageUrl: data.imageUrl,
       },
     });
